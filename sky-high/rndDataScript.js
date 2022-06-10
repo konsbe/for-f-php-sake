@@ -1,6 +1,7 @@
 let func = async () => {
   return parseFloat(Math.random() * 100).toFixed(2);
 };
+//
 const getRandoms = async () => {
   let p = 0;
   p = await func();
