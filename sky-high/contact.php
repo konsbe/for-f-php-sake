@@ -13,7 +13,7 @@
             <li><a href="./destinations.html">Destinations</a></li>
             <li><a href="./information.php">CRUD Informations</a></li>
             <li><a href="./personal-data.php">Book A Flight</a></li>
-            <li style="float:right" class="active"><a href="./contact.html">Contact</a></li>
+            <li style="float:right" class="active"><a href="./contact.php">Contact</a></li>
         </ul>
 
 <div class="container" style="margin-top:3rem;">
@@ -59,7 +59,7 @@
   </div>
   <br>
   <div class="row">
-    <input type="submit" value="Submit">
+    <input  name="mybtn" id="mybtn" type="submit" value="Submit">
   </div>
   </form>
 </div>

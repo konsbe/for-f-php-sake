@@ -13,7 +13,7 @@
     <li><a href="./destinations.html">Destinations</a></li>
     <li><a href="./information.php">CRUD Informations</a></li>
     <li  class="active"><a href="./personal-data.php">Book A Flight</a></li>
-    <li style="float:right" class="active"><a href="./contact.html">Contact</a></li>
+    <li style="float:right" class="active"><a href="./contact.php">Contact</a></li>
 </ul>
 
 <div class="container">

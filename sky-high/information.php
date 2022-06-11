@@ -14,7 +14,7 @@
         <li><a href="./destinations.html">Destinations</a></li>
         <li class="active"><a href="./information.php">CRUD Informations</a></li>
         <li><a href="./personal-data.php">Book A Flight</a></li>
-        <li style="float:right"><a href="./contact.html">Contact</a></li>
+        <li style="float:right"><a href="./contact.php">Contact</a></li>
     </ul>
     <div class="divTable">
       <h4 style="margin-top:6rem;margin-bottom: 3rem;">Εταιρείες που συνεργαζόμαστε</h4>
