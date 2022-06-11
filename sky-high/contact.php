@@ -6,29 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
     <title>Contact</title>
-  <?php
-    require_once 'env.php';
-    //Open Connection
-    $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE."user=".DB_USER." password=".DB_PASS." options='--client_encoding=UTF8'";
-    $dbconn = pg_connect($connecionstr);
-    // Check connection
-    if (!$dbconn) {
-      die("Connection failed: " . pg_connect_error());
-    }
-    //Sql query
-    $sql = "INSERT INTO me(flname, username, password, mathima, vathmos) VALUES ('".$_POST['flname']."','".$_POST['username']."','12','Τεχνολογίες',10) ";
-    echo $sql;
-    $result = pg_query($dbconn, $sql) ;
-    //Check results
-    if ($result) {
-    echo "αποθηκευση οκ";
-    } else {
-      echo "αποθηκευση NOT οκ <br>";
-      die('Query failed: ' . pg_last_error());
-    }
-    //Close connection
-    pg_close($dbconn);
-  ?>
+
 </head>
 <body>
         <ul class="navbar">
@@ -40,7 +18,8 @@
         </ul>
 
 <div class="container" style="margin-top:3rem;">
-  <form  onsubmit="myFunction().then(handleResetForm())">
+  <!-- <form  onsubmit="myFunction().then(handleResetForm())"> -->
+  <form  method="post" action="apiContact.php">
   <div class="row">
     <div class="col-25">
       <label for="fname">First Name</label>
