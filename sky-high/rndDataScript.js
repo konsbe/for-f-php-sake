@@ -2,7 +2,6 @@ let func = async () => {
   return parseFloat(Math.random() * 100).toFixed(2);
 };
 //
-// document.getElementById("dateLeaving").value = new Date().toDateInputValue();
 const getRandoms = async () => {
   let p = 0;
   p = await func();
