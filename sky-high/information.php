@@ -10,8 +10,8 @@
     <ul class="navbar">
         <li><a href="../sky-high.html">Home</a></li>
         <li><a href="./destinations.html">Destinations</a></li>
-        <li class="active"><a href="./information.html">CRUD Informations</a></li>
-        <li><a href="./personal-data.html">Book A Flight</a></li>
+        <li class="active"><a href="./information.php">CRUD Informations</a></li>
+        <li><a href="./personal-data.php">Book A Flight</a></li>
         <li style="float:right"><a href="./contact.html">Contact</a></li>
     </ul>
     <div class="divTable">

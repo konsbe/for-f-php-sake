@@ -10,8 +10,8 @@
 <ul class="navbar">
     <li><a href="../sky-high.html">Home</a></li>
     <li><a href="./destinations.html">Destinations</a></li>
-    <li><a href="./information.html">CRUD Informations</a></li>
-    <li  class="active"><a href="./personal-data.html">Book A Flight</a></li>
+    <li><a href="./information.php">CRUD Informations</a></li>
+    <li  class="active"><a href="./personal-data.php">Book A Flight</a></li>
     <li style="float:right" class="active"><a href="./contact.html">Contact</a></li>
 </ul>
 
@@ -68,13 +68,13 @@
         <label for="dateLeaving">Ημερομηνία Αναχώρηση</label>
       </div>
       <div class="col-25">
-        <input type="date" id="dateLeaving" name="dateLeaving" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
+        <input type="date" id="dateLeaving" value="<?php echo date('Y-m-d'); ?>" name="dateLeaving" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
       </div>
           <div class="col-25" style="padding-left:1rem;">
         <label for="dateReturn">Επιστοφή</label>
       </div>
       <div class="col-25">
-        <input type="date" id="dateReturn" name="dateReturn" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
+        <input type="date" value="<?php echo date('Y-m-d'); ?>" id="dateReturn" name="dateReturn" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
       </div>
 
     </div>
@@ -161,7 +161,6 @@
 
   </form>
 </div>
-
 <script>
 function handleResetForm() {
   document.getElementById("myForm").reset();
