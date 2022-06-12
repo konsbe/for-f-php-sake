@@ -82,6 +82,20 @@
     </div>
     <div class="row">
       <div class="col-25">
+        <label for="hourLeave">Ώρα Αναχώρηση</label>
+      </div>
+      <div class="col-25">
+        <div id="hourLeave"></div>
+      </div>
+      <div class="col-25" style="padding-left:1rem;">
+        <label for="hourComing">Ώρα Επιστοφή</label>
+      </div>
+      <div class="col-25">
+        <div id="hourComing"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
         <label for="personId">Χώρα Αναχώρησης</label>
       </div>
       <div class="col-25">
