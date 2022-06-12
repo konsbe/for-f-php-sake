@@ -167,6 +167,11 @@
 function handleResetForm() {
   document.getElementById("myForm").reset();
 }
+const handleResetForm = () => {
+    var d = new Date()
+    var date = d.getDate()
+  return
+}
 function handleSubmit() {
 
   alert(
