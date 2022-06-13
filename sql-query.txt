@@ -26,6 +26,7 @@ select * from  airplanes;
 -- select plane_name from airplanes ORDER BY random() limit 1
 
 
+                                        -->Create table customers
 
 CREATE TABLE customers (
 	customer_name VARCHAR ( 50 ) NOT NULL,
@@ -36,6 +37,8 @@ CREATE TABLE customers (
 	customer_created_on BIGINT
 );
 
+
+select * from customers;
 
 
 
