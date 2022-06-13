@@ -9,7 +9,7 @@
 <body>
 
 <?php
-    require_once 'env.php';
+    require_once '../env.php';
     //Open Connection
     $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE." password=".DB_PASS." user=".DB_USER." options='--client_encoding=UTF8'";
     $dbconn = pg_connect($connecionstr);
@@ -25,10 +25,16 @@
     $result = pg_query($dbconn, $sql) ;
     //Check results
     if ($result) {
-            echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>αποθηκευση οκ</p> <br><a href='./contact.php'>Back</a></div>
+            echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
+            <p>αποθηκευση οκ</p> <br>
+            <a href='../contact.php'>Back</a>
+            </div>
 ";
     } else {
-        echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>αποθηκευση NOT οκ</p> <br><a href='./contact.php'>Back</a></div>
+        echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
+        <p>αποθηκευση NOT οκ</p> <br>
+        <a href='../contact.php'>Back</a>
+        </div>
 ";
         die('Query failed: ' . pg_last_error());
     }

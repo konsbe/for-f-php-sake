@@ -20,7 +20,7 @@
 
 <div class="container" style="margin-top:3rem;">
   <!-- <form  onsubmit="myFunction().then(handleResetForm())"> -->
-  <form  method="post" action="apiContact.php">
+  <form  method="post" action="./api/apiContact.php">
   <div class="row">
     <div class="col-25">
       <label for="fname">First Name</label>

@@ -64,7 +64,7 @@
         <div class="divTable">
           <span>CREATE NEW</span>
           <hr />
-          <form onsubmit="handlesubmit()" method="POST" action="apiAircraft.php">
+          <form onsubmit="handlesubmit()" method="POST" action="./api/apiAircraft.php">
         <div class="row">
           <div class="col-25" >
             <label for="idPlane">Aircraft ID</label>
@@ -99,7 +99,7 @@
   <div class="divTable">
     <span>UPDATE BY ID</span>
     <hr/>
-    <form onsubmit="handlesubmit()" method="POST" action="apiUpdateAircraft.php" style="margin-bottom:3rem;">
+    <form onsubmit="handlesubmit()" method="POST" action="./api/apiUpdateAircraft.php" style="margin-bottom:3rem;">
     <div class="row">
       <div class="col-25" >
         <label for="idPlaneUpdate">Aircraft ID</label>
@@ -134,7 +134,7 @@
   <span>DELETE BY ID</span>
   <hr/>
 
-  <form onsubmit="handlesubmit()" method="POST" action="apiDeleteAircraft.php" style="margin-bottom:3rem;" >
+  <form onsubmit="handlesubmit()" method="POST" action="./api/apiDeleteAircraft.php" style="margin-bottom:3rem;" >
     <div class="row">
       <div class="col-25">
         <label for="planeDelete">Aircraft ID</label>
