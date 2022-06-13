@@ -9,62 +9,59 @@
 
 </head>
 <body>
-    <ul class="navbar">
+    <!-- <ul class="navbar">
         <li><a href="../sky-high.html">Home</a></li>
         <li><a href="./destinations.html">Destinations</a></li>
         <li class="active"><a href="./information.php">CRUD Informations</a></li>
         <li><a href="./personal-data.php">Book A Flight</a></li>
         <li style="float:right"><a href="./contact.php">Contact</a></li>
-    </ul>
-    <div class="divTable">
-      <h4 style="margin-top:6rem;margin-bottom: 3rem;">Εταιρείες που συνεργαζόμαστε</h4>
-    <table id="flyghts">
-  <tr>
-    <th>ID</th>
-    <th>Company</th>
-    <th>Distance</th>
-  </tr>
-  <tr>
-    <td>Air bahal</td>
-    <td>GN</td>
-    <td>12.000 <span style="float:right">km</span></td>
-  </tr>
-  <tr>
-    <td>Berglunds Gapal</td>
-    <td>SW</td>
-    <td>12.000 <span style="float:right">km</span></td>
-  </tr>
-  <tr>
-    <td>Centro Olympic</td>
-    <td>MXC</td>
-    <td>13.500 <span style="float:right">km</span></td>
-  </tr>
-  <tr>
-    <td>Handel</td>
-    <td>AUS</td>
-    <td>38.000 <span style="float:right">km</span></td>
-  </tr>
-  <tr>
-    <td>Island Travelling</td>
-    <td>UK</td>
-    <td>20.000 <span style="float:right">km</span></td>
-  </tr>
-  <tr>
-    <td>Königlich</td>
-    <td>GRM</td>
-    <td>15.000 <span style="float:right">km</span></td>
-  </tr>
-  <tr>
-    <td>Laughing puppets</td>
-    <td>CND</td>
-    <td>9.000 <span style="float:right">km</span></td>
-  </tr>
-  <tr>
-  </tr>
-</table>
-</div>
+    </ul> -->
+    <?php
+      require_once 'env.php';
+      //Open Connection
+      $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE." password=".DB_PASS." user=".DB_USER." options='--client_encoding=UTF8'";
+      $dbconn = pg_connect($connecionstr);
+      $milliseconds = floor(microtime(true) * 1000);
+
+      // Check connection
+      if (!$dbconn) {
+          die("Connection failed: " . pg_connect_error());
+      }
+      //Sql query
+      $sql = " SELECT * FROM airplanes;";
+      $result = pg_query($dbconn, $sql) ;
+      //Check results
+      if ($result) {
+        //
+        var_dump($result);
+        echo "<div class='divTable'>";
+        echo "<h4 style='margin-top:6rem;margin-bottom: 3rem;'>Εταιρείες που συνεργαζόμαστε</h4>";
+        echo "<table id='flyghts'>";
+        echo "  <tr>
+          <th>ID</th>
+          <th>Company</th>
+          <th>Distance</th>
+        </tr>";
+        while ($row = pg_fetch_row($result)) {
+        echo "<tr>
+          <td>$row[0]</td>
+          <td>$row[1]</td>
+          <td>$row[2] <span style='float:right'>km</span></td>
+        </tr>
+        ";
+      }
+      echo "</table>";
+      echo "</div>";
+      } else {
+          echo "αποθηκευση NOT οκ <br>";
+          die('Query failed: ' . pg_last_error());
+      }
+      //Close connection
+      pg_close($dbconn);
+    ?>
+
 <div class="divTable">
-  <form onsubmit="handlesubmit()">
+  <form onsubmit="handlesubmit()" method="POST" action="apiAircraft.php">
     <div class="row">
       <div class="col-25" >
         <label for="idPlane">Aircraft ID</label>

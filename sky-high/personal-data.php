@@ -78,9 +78,7 @@
       <div class="col-25">
         <input type="date" value="<?php echo date('Y-m-d'); ?>" id="dateReturn" name="dateReturn" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
       </div>
-
-    </div>
-    <div class="row">
+        <div class="row">
       <div class="col-25">
         <label for="hourLeave">Ώρα Αναχώρηση</label>
       </div>
@@ -93,6 +91,7 @@
       <div class="col-25">
         <div id="hourComing"></div>
       </div>
+    </div>
     </div>
     <div class="row">
       <div class="col-25">
@@ -181,36 +180,14 @@
 function handleResetForm() {
   document.getElementById("myForm").reset();
 }
-const handleResetForm = () => {
-    var d = new Date()
-    var date = d.getDate()
-  return
-}
-function handleSubmit() {
 
-  alert(
-    "Thanks! mr: "+fname.value
-    + "\n" + "phone: "+phone.value
-    + "\n" + "mail: "+mail.value
-    + "\n" + "idCard: " + idCard.value
-    + "\n" + "address: "+address.value
-    + "\n" + "country from: "+ countryFROM.value
-    + "\n" + "country to: "+ countryTO.value
-    + "\n" + "date leaving: "+ dateLeaving.value
-    + "\n" + "date return: "+ dateReturn.value
-    + "\n" + "airplane: "+ document.getElementById("aircraft").innerHTML
-    + "\n" + "reservation id: "+ document.getElementById("reservationId").innerHTML
-    + "\n" + "ticket id: "+ document.getElementById("ticketId").innerHTML
-    + "\n" + "price: "+ document.getElementById("myPrice").children[0].innerHTML
-
-
-    )
-}
 function handlePrint() {
   alert("Sorry :( no printer connection detected!")
 }
 </script>
 
 <script type="text/javascript" src="./rndDataScript.js"></script>
+<script type="text/javascript" src="./validations.js"></script>
+
 </body>
 </html>

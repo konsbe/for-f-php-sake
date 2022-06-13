@@ -69,6 +69,10 @@ const getRandoms = async () => {
 
 let activitiesTo = document.getElementById("countryTO");
 let activitiesFrom = document.getElementById("countryFROM");
+let activitiesdateLeaving = document.getElementById("dateLeaving");
+let activitiesdateReturn = document.getElementById("dateReturn");
 let hourTO = document.getElementById("hourComing");
+activitiesdateLeaving.addEventListener("change", getRandoms);
+dateReturn.addEventListener("change", getRandoms);
 activitiesTo.addEventListener("change", getRandoms);
 activitiesFrom.addEventListener("change", getRandoms);
