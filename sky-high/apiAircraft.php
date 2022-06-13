@@ -11,13 +11,15 @@
     }
     //Sql query
     $sql = "INSERT INTO airplanes(plane_id,plane_name,distance) VALUES ('".$_POST['idPlane']."','".$_POST['planeCompany']."','".$_POST['planeDistance']."')";
-    echo $sql;
+    // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     //Check results
     if ($result) {
-    echo "αποθηκευση οκ";
+                echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>αποθηκευση οκ</p> <br><a href='./information.php'>Back</a></div>
+";
     } else {
-        echo "αποθηκευση NOT οκ <br>";
+                    echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>Error: στην αποθηκευση</p> <br><a href='./contact.php'>Back</a></div>
+";
         die('Query failed: ' . pg_last_error());
     }
     //Close connection

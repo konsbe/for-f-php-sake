@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
 <?php
     require_once 'env.php';
     //Open Connection
@@ -11,15 +21,19 @@
     }
     //Sql query
     $sql = "INSERT INTO personal(first_name, last_name, country,created_on) VALUES ('".$_POST['firstname']."','".$_POST['lastname']."','".$_POST['country']."',$milliseconds) ";
-    echo $sql;
+    // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     //Check results
     if ($result) {
-    echo "αποθηκευση οκ";
+            echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>αποθηκευση οκ</p> <br><a href='./contact.php'>Back</a></div>
+";
     } else {
-        echo "αποθηκευση NOT οκ <br>";
+        echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>αποθηκευση NOT οκ</p> <br><a href='./contact.php'>Back</a></div>
+";
         die('Query failed: ' . pg_last_error());
     }
     //Close connection
     pg_close($dbconn);
 ?>
+</body>
+</html>

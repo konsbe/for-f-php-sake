@@ -9,13 +9,13 @@
 
 </head>
 <body>
-    <!-- <ul class="navbar">
+    <ul class="navbar">
         <li><a href="../sky-high.html">Home</a></li>
         <li><a href="./destinations.html">Destinations</a></li>
         <li class="active"><a href="./information.php">CRUD Informations</a></li>
         <li><a href="./personal-data.php">Book A Flight</a></li>
         <li style="float:right"><a href="./contact.php">Contact</a></li>
-    </ul> -->
+    </ul>
     <?php
       require_once 'env.php';
       //Open Connection
