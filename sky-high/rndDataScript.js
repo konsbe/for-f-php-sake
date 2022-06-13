@@ -18,7 +18,7 @@ const getRandoms = async () => {
   let reservationId = price * 1000 + 2048;
   var resultTime = await randomTime();
   var resultTimeTwo = await randomTime();
-  console.log("random time:", resultTime);
+
   if (document.getElementById("myPrice").children[0]) {
     let priceElement = document.getElementById("myPrice").children[0];
     let ticketElement = document.getElementById("ticketId");

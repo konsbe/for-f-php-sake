@@ -2,11 +2,16 @@ function handleSubmit() {
   if (
     document.getElementById("countryTO").value ===
       document.getElementById("countryFROM").value ||
-    document.getElementById("hourLeave").value ===
-      document.getElementById("hourComing").value
+    document.getElementById("dateLeaving").value ===
+      document.getElementById("dateReturn").value ||
+    document.getElementById("dateLeaving").value >
+      document.getElementById("dateReturn").value
   ) {
     alert("Your Days or the Airports has wrong values!");
   } else {
+    // element = document.getElementById("myForm")
+    // element.setAttribute("method","POST")
+    // element.setAttribute("action","apiDeleteAircraft.php")
     alert(
       "Thanks! mr: " +
         fname.value +
