@@ -10,6 +10,7 @@
 </head>
 <body>
         <ul class="navbar">
+            <li><a href="./dashboard.php">Dashboard</a></li>
             <li><a href="../sky-high.html">Home</a></li>
             <li><a href="./destinations.html">Destinations</a></li>
             <li><a href="./information.php">CRUD Informations</a></li>

@@ -9,15 +9,17 @@
 </head>
 <body>
 <ul class="navbar">
+    <li><a href="./dashboard.php">Dashboard</a></li>
     <li><a href="../sky-high.html">Home</a></li>
     <li><a href="./destinations.html">Destinations</a></li>
     <li><a href="./information.php">CRUD Informations</a></li>
     <li  class="active"><a href="./personal-data.php">Book A Flight</a></li>
     <li style="float:right" class="active"><a href="./contact.php">Contact</a></li>
 
+
 </ul>
 
-<div class="container">
+<div class="container"style="margin-bottom:5rem;margin-top:5rem;" >
   <h4 style="margin-top:3rem;margin-bottom:2rem;border-bottom: 1px solid;">Personal Informations</h4>
   <form id="myForm" >
     <div class="row">
@@ -57,10 +59,10 @@
         <input type="email" style="width:100%;padding:0.6rem;" id="mail" name="mail" placeholder="example@email.com..">
       </div>
       <div class="col-25" style="padding-left:1rem;">
-        <label for="address">Address</label>
+        <label for="userAddress">Personal Address</label>
       </div>
       <div class="col-25">
-        <input type="text" id="address" name="address" placeholder="Ener your address..">
+        <input type="text" id="userAddress" name="userAddress" placeholder="Ener your address..">
       </div>
 
     </div>
@@ -98,7 +100,7 @@
         <label for="personId">Χώρα Αναχώρησης</label>
       </div>
       <div class="col-25">
-        <select id="countryFROM" name="countryFROM">
+        <select id="countryFROM" name="countryFROM" >
           <option value="australia">AUS</option>
           <option value="tsimari">TSI</option>
           <option value="greece">GR</option>
@@ -108,10 +110,10 @@
         </select>
       </div>
       <div class="col-25">
-        <label for="personId" style="padding-left:1rem;">Χώρα Άφιξης</label>
+        <label for="personId" style="padding-left:1rem;" >Χώρα Άφιξης</label>
       </div>
       <div class="col-25">
-        <select id="countryTO" name="countryTO">
+        <select id="countryTO" name="countryTO" >
           <option value="australia">AUS</option>
           <option value="tsimari">TSI</option>
           <option value="greece">GR</option>
@@ -123,10 +125,41 @@
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="ticketId">Εισητήριο</label>
+        <label for="aircraft">Airplane</label>
       </div>
       <div class="col-25">
-        <div id="ticketId"></div>
+        <select id="aircraft" name="aircraft" >
+      <?php
+      function phpfunction() {
+      require_once 'env.php';
+      //Open Connection
+      $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE." password=".DB_PASS." user=".DB_USER." options='--client_encoding=UTF8'";
+      $dbconn = pg_connect($connecionstr);
+      $milliseconds = floor(microtime(true) * 1000);
+
+      // Check connection
+      if (!$dbconn) {
+        die("Connection failed: " . pg_connect_error());
+      }
+      //Sql query
+      $sql = "select plane_name from  airplanes;";
+      $result = pg_query($dbconn, $sql) ;
+      //Check results
+      if ($result) {
+        // var_dump($result);
+        while ($row = pg_fetch_row($result)) {
+        echo "<option value='$row[0]'>$row[0]</option>";
+        }
+      } else {
+        echo "Oops:Error! <br>";
+        die('Query failed: ' . pg_last_error());
+      }
+      //Close connection
+      pg_close($dbconn);
+    }
+    phpfunction();
+    ?>
+      </select>
       </div>
       <div class="col-25" style="padding-left:1rem;">
         <label for="timeZone">Time Zone</label>
@@ -137,10 +170,10 @@
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="aircraft">Airplane</label>
+        <label for="ticketId">Εισητήριο</label>
       </div>
       <div class="col-25">
-        <div  id="aircraft"></div>
+        <div id="ticketId"></div>
       </div>
       <div class="col-25" style="padding-left:1rem;">
         <label for="reservationId">Reservation ID</label>
@@ -151,7 +184,13 @@
 
     </div>
     <div class="row">
+      <div class="col-25" >
+        <label></label>
+      </div>
       <div class="col-25">
+        <div ></div>
+      </div>
+      <div class="col-25" style="padding-left:1rem;">
         <label for="myPrice">Price</label>
       </div>
       <div class="col-25">

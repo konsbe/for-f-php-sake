@@ -10,12 +10,13 @@
         die("Connection failed: " . pg_connect_error());
     }
     //Sql query
+    $plane=$_POST['planeCompany'];
     $sql = "INSERT INTO airplanes(plane_id,plane_name,distance) VALUES ('".$_POST['idPlane']."','".$_POST['planeCompany']."','".$_POST['planeDistance']."')";
     // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     //Check results
     if ($result) {
-                echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>αποθηκευση οκ</p> <br><a href='./information.php'>Back</a></div>
+                echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>$plane αποθηκευση οκ</p> <br><a href='./information.php'>Back</a></div>
 ";
     } else {
                     echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>Error: στην αποθηκευση</p> <br><a href='./information.php'>Back</a></div>

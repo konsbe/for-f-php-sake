@@ -14,27 +14,23 @@ const getRandoms = async () => {
   p = await func();
   let price = p > 40 ? p : p + 50;
   let ticketId = price * 1000 + 183 + 8888888800000;
-  let airplane = ticketId - 1000 + "AWS";
   let reservationId = price * 1000 + 2048;
   var resultTime = await randomTime();
   var resultTimeTwo = await randomTime();
-
+  let airline = Math.floor(Math.random() * 10) - 5;
   if (document.getElementById("myPrice").children[0]) {
     let priceElement = document.getElementById("myPrice").children[0];
     let ticketElement = document.getElementById("ticketId");
-    let airplaneElement = document.getElementById("aircraft");
     let reservationIdElement = document.getElementById("reservationId");
     let hourLeavedElement = document.getElementById("hourLeave");
     let hourComingElement = document.getElementById("hourComing");
     const priceNode = document.createTextNode(price);
     const ticketNode = document.createTextNode(ticketId);
-    const airplaneNode = document.createTextNode(airplane);
     const reservationIdNode = document.createTextNode(reservationId);
     const resultNode = document.createTextNode(resultTime);
     const resultNodeTwo = document.createTextNode(resultTimeTwo);
     priceElement.replaceChild(priceNode, priceElement.childNodes[0]);
     ticketElement.replaceChild(ticketNode, ticketElement.childNodes[0]);
-    airplaneElement.replaceChild(airplaneNode, airplaneElement.childNodes[0]);
     hourLeavedElement.replaceChild(resultNode, hourLeavedElement.childNodes[0]);
     hourComingElement.replaceChild(
       resultNodeTwo,
@@ -52,9 +48,6 @@ const getRandoms = async () => {
     const textnodet = document.createTextNode(ticketId);
     node.appendChild(textnodet);
     document.getElementById("ticketId").appendChild(textnodet);
-    const textnodea = document.createTextNode(airplane);
-    node.appendChild(textnodea);
-    document.getElementById("aircraft").appendChild(textnodea);
     const textnoder = document.createTextNode(reservationId);
     node.appendChild(textnoder);
     document.getElementById("reservationId").appendChild(textnoder);
@@ -64,6 +57,9 @@ const getRandoms = async () => {
     const textnodehc = document.createTextNode(resultTimeTwo);
     node.appendChild(textnodehc);
     document.getElementById("hourComing").appendChild(textnodehc);
+    const textnoderN = document.createTextNode(airline);
+    node.appendChild(textnoderN);
+    document.getElementById("rndNumNode").appendChild(textnoderN);
   }
 };
 
@@ -72,7 +68,9 @@ let activitiesFrom = document.getElementById("countryFROM");
 let activitiesdateLeaving = document.getElementById("dateLeaving");
 let activitiesdateReturn = document.getElementById("dateReturn");
 let hourTO = document.getElementById("hourComing");
+let activitiesAircraft = document.getElementById("aircraft");
 activitiesdateLeaving.addEventListener("change", getRandoms);
 dateReturn.addEventListener("change", getRandoms);
 activitiesTo.addEventListener("change", getRandoms);
 activitiesFrom.addEventListener("change", getRandoms);
+activitiesAircraft.addEventListener("change", getRandoms);

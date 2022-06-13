@@ -19,3 +19,28 @@ UPDATE airplanes
 
                                         -->Select all from airplanes
 select * from  airplanes;
+
+
+-- select plane_name from  airplanes;
+-- select plane_name from airplanes where random() < (SELECT count(*) FROM airplanes);
+-- select plane_name from airplanes ORDER BY random() limit 1
+
+
+
+CREATE TABLE customers (
+	customer_name VARCHAR ( 50 ) NOT NULL,
+	customer_phone VARCHAR ( 25 ) NOT NULL,
+	customer_id_card VARCHAR (25) PRIMARY KEY,
+	customer_mail VARCHAR (40) NOT NULL,
+	customer_address VARCHAR (50) NOT NULL,
+	customer_created_on BIGINT
+);
+
+
+
+
+
+
+
+
+
