@@ -1,0 +1,21 @@
+
+                                        -->Create table airplanes
+CREATE TABLE airplanes (
+ 	plane_id serial PRIMARY KEY,
+ 	plane_name VARCHAR ( 50 ) NOT NULL,
+ 	distance numeric NOT NULL
+ );
+
+
+                                        -->Delete from airplanes
+DELETE FROM airplanes
+    WHERE plane_id = 123;
+
+                                        -->Update from airplanes
+UPDATE airplanes
+    SET plane_name = 'asd',
+        distance = 1000
+    WHERE plane_id=5557;
+
+                                        -->Select all from airplanes
+select * from  airplanes;

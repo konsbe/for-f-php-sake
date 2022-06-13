@@ -9,16 +9,17 @@
     if (!$dbconn) {
         die("Connection failed: " . pg_connect_error());
     }
+    $id=$_POST['planeDelete'];
     //Sql query
-    $sql = "INSERT INTO airplanes(plane_id,plane_name,distance) VALUES ('".$_POST['idPlane']."','".$_POST['planeCompany']."','".$_POST['planeDistance']."')";
+    $sql = "DELETE FROM airplanes WHERE plane_id='$id'";
     // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     //Check results
     if ($result) {
-                echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>αποθηκευση οκ</p> <br><a href='./information.php'>Back</a></div>
+                echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>επιτυχής διαγραφή του $id</p> <br><a href='./information.php'>Back</a></div>
 ";
     } else {
-                    echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>Error: στην αποθηκευση</p> <br><a href='./information.php'>Back</a></div>
+                    echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'><p>Error: στη διαγραφή του $id</p> <br><a href='./information.php'>Back</a></div>
 ";
         die('Query failed: ' . pg_last_error());
     }
