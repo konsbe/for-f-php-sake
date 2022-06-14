@@ -1,3 +1,31 @@
+// async function showUser() {
+//   var xmlhttp = new XMLHttpRequest();
+//   xmlhttp.onreadystatechange = async function () {
+//     if (this.readyState == 4 && this.status == 200) {
+//       let data = await this.responseText;
+//       return data;
+//     }
+//   };
+//   const data = xmlhttp.onreadystatechange();
+//   console.log("datadata", data);
+//   xmlhttp.open("GET", "./api/newApi.php", true);
+//   xmlhttp.send();
+//   return data;
+// }
+function getPlanes() {
+  return (promise = new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      resolve(this.responseText);
+    };
+    xhr.onerror = reject;
+    xhr.open("GET", "./api/newApi.php", true);
+    xhr.send();
+  }));
+}
+
+// fileExists("url_to_file").then((text) => console.log(text));
+
 let randomTime = async () => {
   hrs = Math.round(Math.random() * 12);
   mins = Math.round(Math.random() * 60);
@@ -7,17 +35,20 @@ let randomTime = async () => {
   return String(hFormat + hrs + ":" + mFormat + mins + " " + amPm);
 };
 let func = async () => {
-  return parseFloat(Math.random() * 100).toFixed(2);
+  return parseFloat(Math.random().toFixed(2) * 100);
 };
 const getRandoms = async () => {
-  let p = 0;
-  p = await func();
-  let price = p > 40 ? p : p + 50;
+  // let p = 0;
+  // p = await func();
+  let p = (Math.random() * 100).toFixed(2);
+  let psum = (Math.random() * 1000).toFixed(2);
+  let price = p > 40 ? p : psum;
   let ticketId = price * 1000 + 183 + 8888888800000;
   let reservationId = price * 1000 + 2048;
   var resultTime = await randomTime();
   var resultTimeTwo = await randomTime();
-  let airline = Math.floor(Math.random() * 10) - 5;
+  var station = "AWS";
+  const data = await getPlanes().then((obj) => console.log("obj  ", obj));
   if (document.getElementById("myPrice").children[0]) {
     let priceElement = document.getElementById("myPrice").children[0];
     let ticketElement = document.getElementById("ticketId");
@@ -40,6 +71,29 @@ const getRandoms = async () => {
       reservationIdNode,
       reservationIdElement.childNodes[0]
     );
+    if (
+      price == psum &&
+      document.getElementById("midStationValue").children[0]
+    ) {
+      midStation.childNodes[0].remove();
+      let midStationElement = document.getElementById("midStationValue");
+      const midStqtionNode = document.createTextNode(station);
+      midStationElement.replaceChild(
+        midStqtionNode,
+        midStationElement.childNodes[0]
+      );
+    } else if (
+      price == psum &&
+      !document.getElementById("midStationValue").children[0]
+    ) {
+      const node = document.createElement("div");
+      document.getElementById("midStationValue").appendChild(node);
+      const textnodes = document.createTextNode(station);
+      node.appendChild(textnodes);
+    } else if (document.getElementById("midStationValue").childNodes[0]) {
+      let midStation = document.getElementById("midStationValue");
+      midStation.childNodes[0].remove();
+    }
   } else {
     const node = document.createElement("div");
     const textnode = document.createTextNode(price);
@@ -57,9 +111,16 @@ const getRandoms = async () => {
     const textnodehc = document.createTextNode(resultTimeTwo);
     node.appendChild(textnodehc);
     document.getElementById("hourComing").appendChild(textnodehc);
-    const textnoderN = document.createTextNode(airline);
-    node.appendChild(textnoderN);
-    document.getElementById("rndNumNode").appendChild(textnoderN);
+    if (price === psum) {
+      // let midStation = document.getElementById("midStationValue");
+      // midStation.innerHTML("AWS");
+      document.getElementById("midStationValue").appendChild(node);
+      const textnodes = document.createTextNode(station);
+      node.appendChild(textnodes);
+    } else if (document.getElementById("midStationValue").childNodes[0]) {
+      let midStation = document.getElementById("midStationValue");
+      midStation.childNodes[0].remove();
+    }
   }
 };
 

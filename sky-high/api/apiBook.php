@@ -19,14 +19,14 @@
                 echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                 <p>$name αποθηκευση οκ
                 </p> <br>
-                <a href='../information.php'>Back</a>
+                <a href='../dashboard.php'>Back</a>
                 </div>
 ";
     } else {
                     echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                     <p>Error: στην αποθηκευση
                     </p> <br>
-                    <a href='../information.php'>Back</a>
+                    <a href='../dashboard.php'>Back</a>
                     </div>
 ";
         die('Query failed: ' . pg_last_error());

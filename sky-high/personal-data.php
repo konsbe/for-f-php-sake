@@ -123,6 +123,20 @@
         </select>
       </div>
     </div>
+        <div class="row">
+      <div class="col-25" >
+        <label></label>
+      </div>
+      <div class="col-25">
+        <div ></div>
+      </div>
+      <div class="col-25" style="padding-left:1rem;">
+        <label for="midStationValue">Mid Station</label>
+      </div>
+        <div class="col-25">
+        <div id="midStationValue"></div>
+        </div>
+    </div>
     <div class="row">
       <div class="col-25">
         <label for="aircraft">Airplane</label>
@@ -225,8 +239,8 @@ function handlePrint() {
 }
 </script>
 
-<script type="text/javascript" src="./rndDataScript.js"></script>
-<script type="text/javascript" src="./validations.js"></script>
+<script type="text/javascript" src="./javascript/rndDataScript.js"></script>
+<script type="text/javascript" src="./javascript/validations.js"></script>
 
 </body>
 </html>
