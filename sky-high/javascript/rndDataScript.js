@@ -24,8 +24,6 @@ function getPlanes() {
   }));
 }
 
-// fileExists("url_to_file").then((text) => console.log(text));
-
 let randomTime = async () => {
   hrs = Math.round(Math.random() * 12);
   mins = Math.round(Math.random() * 60);
@@ -49,6 +47,7 @@ const getRandoms = async () => {
   var resultTimeTwo = await randomTime();
   var station = "AWS";
   const data = await getPlanes().then((obj) => console.log("obj  ", obj));
+  console.log("data: ", data);
   if (document.getElementById("myPrice").children[0]) {
     let priceElement = document.getElementById("myPrice").children[0];
     let ticketElement = document.getElementById("ticketId");
