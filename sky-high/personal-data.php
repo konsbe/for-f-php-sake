@@ -88,7 +88,7 @@
         <div id="hourLeave"></div>
       </div>
       <div class="col-25" style="padding-left:1rem;">
-        <label for="hourComing">Ώρα Επιστοφή</label>
+        <label for="hourComing">Ώρα Επιστροφής</label>
       </div>
       <div class="col-25">
         <div id="hourComing"></div>
