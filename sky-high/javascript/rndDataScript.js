@@ -33,7 +33,7 @@ let randomTime = async () => {
   return String(hFormat + hrs + ":" + mFormat + mins + " " + amPm);
 };
 let func = async () => {
-  return parseFloat(Math.random().toFixed(2) * 100);
+  return parseFloat((Math.random() * 100).toFixed(2));
 };
 const getRandoms = async () => {
   // let p = 0;
