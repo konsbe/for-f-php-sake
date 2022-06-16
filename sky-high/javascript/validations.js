@@ -1,100 +1,90 @@
-// import { ticket } from "../defaultParams";
-// function mainInfo(passengerId, passengerPhone, passengerName) {
-//   return (promise = new Promise(function (resolve, reject) {
-//     var xhr = new XMLHttpRequest();
-//     xhr.send = function () {
-//       resolve(this.responseText);
-//     };
-//     xhr.onerror = reject;
-//     xhr.open("POST", "./api/apiBook.php", true);
-//     xhr.send();
-//   }));
-// $.ajax({
-//   type: "POST",
-//   url: "/api/apiBook.php",
-//   data: { passengerId, passengerPhone, passengerName },
-//   success: function (result) {
-//     console.log("success: ", result);
-//   },
-//   onerror: function (error) {
-//     console.log("error: ", error);
-//   },
-// });
-// }
-// async function readid(passengerId, passengerPhone, passengerName) {
-//   var xmlhttp = new XMLHttpRequest();
-//   xmlhttp.open("POST", "./api/apiBook.php", true);
-//   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//   xmlhttp.onreadystatechange = function () {
-//     if (this.readyState === 4 || this.status === 200) {
-//       console.log(this.responseText); // echo from php
-//     } else {
-//       console.log("error: ", this.responseText); // echo from php
-//     }
-//   };
-//   xmlhttp.send(
-//     "passengerId=" +
-//       passengerId +
-//       "passengerPhone=" +
-//       passengerPhone +
-//       "passengerName" +
-//       passengerName
-//   );
-// }
+function getCustomer() {
+  return (promise = new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      resolve(this.responseText);
+    };
+    xhr.onerror = reject;
+    xhr.open("GET", "./api/apiGetCustomer.php", true);
+    xhr.send();
+  }));
+}
+function getCustomerId() {
+  return (promise = new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      resolve(this.responseText);
+    };
+    xhr.onerror = reject;
+    xhr.open("GET", "./api/apiGetCustomerId.php", true);
+    xhr.send();
+  }));
+}
 async function handleSubmit() {
   if (
     document.getElementById("countryTO").value ===
       document.getElementById("countryFROM").value ||
-    document.getElementById("dateLeaving").value ===
-      document.getElementById("dateReturn").value ||
-    document.getElementById("dateLeaving").value >
-      document.getElementById("dateReturn").value
+    document.getElementById("dateTo").value ===
+      document.getElementById("dateFrom").value ||
+    document.getElementById("dateTo").value >
+      document.getElementById("dateFrom").value
   ) {
     alert("Your Days or the Airports has wrong values!");
   } else {
+    const customerId = await getCustomerId().then((obj) => {
+      return await obj;
+    });
+    const customer = await getCustomer().then((obj) => {
+      return obj;
+    });
     element = document.getElementById("myForm");
     element.setAttribute("method", "POST");
-    element.setAttribute("action", "./api/apiBook.php");
-    console.log(ticketElement);
-    alert(
-      "Thanks! mr: " +
-        fname.value +
-        "\n" +
-        "phone: " +
-        phone.value +
-        "\n" +
-        "mail: " +
-        mail.value +
-        "\n" +
-        "idCard: " +
-        idCard.value +
-        "\n" +
-        "useruserAddress: " +
-        userAddress.value +
-        "\n" +
-        "country from: " +
-        countryFROM.value +
-        "\n" +
-        "country to: " +
-        countryTO.value +
-        "\n" +
-        "date leaving: " +
-        dateLeaving.value +
-        "\n" +
-        "date return: " +
-        dateReturn.value +
-        "\n" +
-        "airplane: " +
-        document.getElementById("aircraft").innerHTML +
-        "\n" +
-        "reservation id: " +
-        document.getElementById("reservationId").innerHTML +
-        "\n" +
-        "ticket id: " +
-        document.getElementById("ticketId").innerHTML +
-        "\n" +
-        "price: " +
-        document.getElementById("myPrice").children[0].innerHTML
-    );
+    if (customer && customerId) {
+      alert(customer);
+      element.setAttribute("action", "./api/apiFlight.php");
+      return;
+    } else {
+      element.setAttribute("action", "./api/apiUser.php");
+      alert(
+        "Thanks! mr: " +
+          fname.value +
+          "\n" +
+          "phone: " +
+          phone.value +
+          "\n" +
+          "mail: " +
+          mail.value +
+          "\n" +
+          "idCard: " +
+          idCard.value +
+          "\n" +
+          "useruserAddress: " +
+          userAddress.value +
+          "\n" +
+          "country from: " +
+          countryFROM.value +
+          "\n" +
+          "country to: " +
+          countryTO.value +
+          "\n" +
+          "date leaving: " +
+          dateTo.value +
+          "\n" +
+          "date return: " +
+          dateFrom.value +
+          "\n" +
+          "airplane: " +
+          document.getElementById("aircraft").innerHTML +
+          "\n" +
+          "reservation id: " +
+          document.getElementById("reservationId").innerHTML +
+          "\n" +
+          "ticket id: " +
+          document.getElementById("ticketId").innerHTML +
+          "\n" +
+          "price: " +
+          document.getElementById("myPrice").children[0].innerHTML
+      );
+    }
   }
 }

@@ -69,29 +69,29 @@
     <h4 style="margin-top:3rem;margin-bottom:2rem;border-bottom: 1px solid;">Book a Flight</h4>
     <div class="row">
       <div class="col-25">
-        <label for="dateLeaving">Ημερομηνία Αναχώρηση</label>
+        <label for="dateTo">Ημερομηνία Αναχώρηση</label>
       </div>
       <div class="col-25">
-        <input type="date" id="dateLeaving" value="<?php echo date('Y-m-d'); ?>" name="dateLeaving" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
+        <input type="date" id="dateTo" value="<?php echo date('Y-m-d'); ?>" name="dateTo" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
       </div>
           <div class="col-25" style="padding-left:1rem;">
-        <label for="dateReturn">Επιστοφή</label>
+        <label for="dateFrom">Επιστοφή</label>
       </div>
       <div class="col-25">
-        <input type="date" value="<?php echo date('Y-m-d'); ?>" id="dateReturn" name="dateReturn" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
+        <input type="date" value="<?php echo date('Y-m-d'); ?>" id="dateFrom" name="dateFrom" style="width:100%;padding:1.3rem; border-radius: 3px;height: 2rem; border:0.3px solid gray;">
       </div>
         <div class="row">
       <div class="col-25">
-        <label for="hourLeave">Ώρα Αναχώρηση</label>
+        <label for="hourTo">Ώρα Αναχώρηση</label>
       </div>
       <div class="col-25">
-        <div id="hourLeave"></div>
+        <div id="hourTo"></div>
       </div>
       <div class="col-25" style="padding-left:1rem;">
-        <label for="hourComing">Ώρα Επιστροφής</label>
+        <label for="hourFrom">Ώρα Επιστροφής</label>
       </div>
       <div class="col-25">
-        <div id="hourComing"></div>
+        <div id="hourFrom"></div>
       </div>
     </div>
     </div>
@@ -121,6 +121,22 @@
           <option value="italy">ITALY</option>
           <option value="katwPatissia">KWPA</option>
         </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="personId">Κατηγορία</label>
+      </div>
+      <div class="col-25">
+        <select id="sheetCategory" name="sheetCategory" >
+          <option value="economy">Economy</option>
+          <option value="business">Business</option>
+          <option value="firt class">First Class</option>
+        </select>
+      </div>
+      <div class="col-25">
+      </div>
+      <div class="col-25">
       </div>
     </div>
         <div class="row">

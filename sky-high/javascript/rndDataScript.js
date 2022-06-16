@@ -10,6 +10,28 @@ function getPlanes() {
   }));
 }
 
+function getCustomer() {
+  return (promise = new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      resolve(this.responseText);
+    };
+    xhr.onerror = reject;
+    xhr.open("GET", "./api/apiGetCustomer.php", true);
+    xhr.send();
+  }));
+}
+function getCustomerId() {
+  return (promise = new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      resolve(this.responseText);
+    };
+    xhr.onerror = reject;
+    xhr.open("GET", "./api/apiGetCustomerId.php", true);
+    xhr.send();
+  }));
+}
 let randomTime = async () => {
   hrs = Math.round(Math.random() * 12);
   mins = Math.round(Math.random() * 60);
@@ -32,13 +54,13 @@ const getRandoms = async () => {
   let priceElement = document.getElementById("myPrice");
   let ticketElement = document.getElementById("ticketId");
   let reservationIdElement = document.getElementById("reservationId");
-  let hourLeavedElement = document.getElementById("hourLeave");
-  let hourComingElement = document.getElementById("hourComing");
+  let hourTodElement = document.getElementById("hourTo");
+  let hourFromElement = document.getElementById("hourFrom");
   ticketElement.innerHTML = ticketId;
   priceElement.innerHTML = price;
   reservationIdElement.innerHTML = reservationId;
-  hourLeavedElement.innerHTML = resultTime;
-  hourComingElement.innerHTML = resultTimeTwo;
+  hourTodElement.innerHTML = resultTime;
+  hourFromElement.innerHTML = resultTimeTwo;
   var form = document.getElementById("myForm");
   var elem = document.createElement("input");
   elem.setAttribute("type", "hidden");
@@ -85,14 +107,16 @@ const getRandoms = async () => {
   }
 };
 
-let activitiesTo = document.getElementById("countryTO");
-let activitiesFrom = document.getElementById("countryFROM");
-let activitiesdateLeaving = document.getElementById("dateLeaving");
-let activitiesdateReturn = document.getElementById("dateReturn");
-let hourTO = document.getElementById("hourComing");
-let activitiesAircraft = document.getElementById("aircraft");
-activitiesdateLeaving.addEventListener("change", getRandoms);
-dateReturn.addEventListener("change", getRandoms);
-activitiesTo.addEventListener("change", getRandoms);
-activitiesFrom.addEventListener("change", getRandoms);
-activitiesAircraft.addEventListener("change", getRandoms);
+let countryTo = document.getElementById("countryTO");
+let countryFrom = document.getElementById("countryFROM");
+let dateTo = document.getElementById("dateTo");
+let dateFrom = document.getElementById("dateFrom");
+let hourTO = document.getElementById("hourFrom");
+let aircraft = document.getElementById("aircraft");
+let sheetCategory = document.getElementById("sheetCategory");
+countryTo.addEventListener("change", getRandoms);
+countryFrom.addEventListener("change", getRandoms);
+dateTo.addEventListener("change", getRandoms);
+dateFrom.addEventListener("change", getRandoms);
+aircraft.addEventListener("change", getRandoms);
+sheetCategory.addEventListener("change", getRandoms);

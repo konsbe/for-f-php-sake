@@ -46,13 +46,13 @@
           <th>adress</th>
           <th>Created on</th>
         </tr>";
-        while ($row = pg_fetch_row($result)) {
+        while ($column = pg_fetch_row($result)) {
         echo "<tr>
-          <td>$row[0]</td>
-          <td>$row[1]</td>
-          <td>$row[2]</td>
-          <td>$row[3]</td>
-          <td>$row[4]</td>
+          <td>$column[0]</td>
+          <td>$column[1]</td>
+          <td>$column[2]</td>
+          <td>$column[3]</td>
+          <td>$column[4]</td>
           <td>$toDate</td>
           </tr>
         ";
@@ -60,11 +60,53 @@
       echo "</table>";
       echo "</div>";
     } else {
-      echo "αποθηκευση NOT οκ <br>";
+      echo "error NO data <br>";
       die('Query failed: ' . pg_last_error());
     }
     //Close connection
     pg_close($dbconn);
+
+    $dbconn = pg_connect($connecionstr);
+    $milliseconds = floor(microtime(true) * 1000);
+
+    // Check connection
+    if (!$dbconn) {
+      die("Connection failed: " . pg_connect_error());
+    }
+    //Sql query
+    $sql = " SELECT * FROM tickets;";
+    $result = pg_query($dbconn, $sql) ;
+    //Check results
+    if ($result) {
+      // var_dump($result);
+      echo "<div class='divTable' style='margin-bottom:9rem;'>";
+      echo " <h4 style='margin-top:6rem;margin-bottom: 3rem;'>Εισητήρια</h4>";
+      echo "<table id='flyghts'>";
+      echo "  <tr>
+        <th>Passenger ID</th>
+        <th>Passenger Name</th>
+        <th>Passenger Phone</th>
+        <th>Ticket ID</th>
+        <th>Ticket Price</th>
+      </tr>";
+      while ($column = pg_fetch_row($result)) {
+      echo "<tr>
+        <td>$column[0]</td>
+        <td>$column[1]</td>
+        <td>$column[2]</td>
+        <td>$column[3]</td>
+        <td>$column[4]</td>
+        </tr>
+      ";
+    }
+    echo "</table>";
+    echo "</div>";
+  } else {
+    echo "error NO data <br>";
+    die('Query failed: ' . pg_last_error());
+  }
+  //Close connection
+  pg_close($dbconn);
     ?>
 
 
