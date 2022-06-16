@@ -237,6 +237,13 @@ function handleResetForm() {
 function handlePrint() {
   alert("Sorry :( no printer connection detected!")
 }
+// $(document).ready(function(){
+//    $("#myForm").on("submit", function () {
+//         var hvalue = $('.mine').text();
+//         $(this).append("<input type='hidden' name='ticketId' value=' " + document.getElementById("ticketId").value + " '/>");
+//         $(this).append("<input type='hidden' name='myPrice' value=' " + document.getElementById("myPrice").value + " '/>");
+//     });
+// });
 </script>
 
 <script type="text/javascript" src="./javascript/rndDataScript.js"></script>

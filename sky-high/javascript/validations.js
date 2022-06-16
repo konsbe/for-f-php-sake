@@ -1,17 +1,47 @@
-// function mainInfo() {
-//   $.ajax({
-//     type: "POST",
-//     url: "/apiBook.php",
-//     data: data,
-//     success: function (result) {
-//       console.log("success: ", result);
-//     },
-//     onerror: function (error) {
-//       console.log("error: ", error);
-//     },
-//   });
+// import { ticket } from "../defaultParams";
+// function mainInfo(passengerId, passengerPhone, passengerName) {
+//   return (promise = new Promise(function (resolve, reject) {
+//     var xhr = new XMLHttpRequest();
+//     xhr.send = function () {
+//       resolve(this.responseText);
+//     };
+//     xhr.onerror = reject;
+//     xhr.open("POST", "./api/apiBook.php", true);
+//     xhr.send();
+//   }));
+// $.ajax({
+//   type: "POST",
+//   url: "/api/apiBook.php",
+//   data: { passengerId, passengerPhone, passengerName },
+//   success: function (result) {
+//     console.log("success: ", result);
+//   },
+//   onerror: function (error) {
+//     console.log("error: ", error);
+//   },
+// });
 // }
-function handleSubmit() {
+// async function readid(passengerId, passengerPhone, passengerName) {
+//   var xmlhttp = new XMLHttpRequest();
+//   xmlhttp.open("POST", "./api/apiBook.php", true);
+//   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//   xmlhttp.onreadystatechange = function () {
+//     if (this.readyState === 4 || this.status === 200) {
+//       console.log(this.responseText); // echo from php
+//     } else {
+//       console.log("error: ", this.responseText); // echo from php
+//     }
+//   };
+//   xmlhttp.send(
+//     "passengerId=" +
+//       passengerId +
+//       "passengerPhone=" +
+//       passengerPhone +
+//       "passengerName" +
+//       passengerName
+//   );
+// }
+async function handleSubmit() {
   if (
     document.getElementById("countryTO").value ===
       document.getElementById("countryFROM").value ||
@@ -25,6 +55,7 @@ function handleSubmit() {
     element = document.getElementById("myForm");
     element.setAttribute("method", "POST");
     element.setAttribute("action", "./api/apiBook.php");
+    console.log(ticketElement);
     alert(
       "Thanks! mr: " +
         fname.value +

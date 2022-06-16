@@ -1,3 +1,5 @@
+
+
 <?php
     require_once '../env.php';
     //Open Connection
@@ -9,22 +11,27 @@
     if (!$dbconn) {
         die("Connection failed: " . pg_connect_error());
     }
+    $passengerId= $_POST['passengerId'];
+    $passengerPhone = $_POST['passengerPhone'];
+    $passengerName= $_POST['passengerName'];
     //Sql query
-    $plane=$_POST['planeCompany'];
-    $sql = "INSERT INTO airplanes(plane_id,plane_name,distance) VALUES ('".$_POST['idPlane']."','".$_POST['planeCompany']."','".$_POST['planeDistance']."')";
+    $name=$_POST['lastName'];
+    $sql = "INSERT INTO tickets(passenger_id,passenger_name,passenger_phone) VALUES ('".$_POST['passengerId']."','".$_POST['passengerName ']."','".$_POST['passengerPhone ']."',$milliseconds)";
     // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     //Check results
     if ($result) {
                 echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
-                <p>$plane αποθηκευση οκ</p> <br>
-                <a href='../information.php'>Back</a>
+                <p>$name αποθηκευση οκ
+                </p> <br>
+                <a href='../dashboard.php'>Back</a>
                 </div>
 ";
     } else {
                     echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
-                    <p>Error: στην αποθηκευση</p> <br>
-                    <a href='../information.php'>Back</a>
+                    <p>Error: στην αποθηκευση
+                    </p> <br>
+                    <a href='../dashboard.php'>Back</a>
                     </div>
 ";
         die('Query failed: ' . pg_last_error());
