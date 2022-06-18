@@ -40,7 +40,26 @@ CREATE TABLE customers (
 
 select * from customers;
 
+-- CREATE TABLE tickets (
+-- 	passenger_id_card VARCHAR (25),
+-- 	passenger_name VARCHAR ( 50 ) NOT NULL,
+-- 	passenger_phone VARCHAR ( 25 ) NOT NULL,
+-- 	ticket_id BIGINT  PRIMARY KEY,
+-- 	ticket_price VARCHAR ( 25 ) NOT NULL
+-- );
 
+-- select * from tickets;
+select * from customers;
+-- select customer_id_card from customers WHERE customer_name LIKE 'new';
+
+-- CREATE TABLE customers (
+-- 	customer_name VARCHAR ( 50 ) NOT NULL,
+-- 	customer_phone VARCHAR ( 25 ) NOT NULL,
+-- 	customer_id_card VARCHAR (25) PRIMARY KEY,
+-- 	customer_mail VARCHAR (40) NOT NULL,
+-- 	customer_address VARCHAR (50) NOT NULL,
+-- 	customer_created_on BIGINT
+-- );
 
 <?php
     require_once '../env.php';
