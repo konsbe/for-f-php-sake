@@ -16,6 +16,25 @@
         <li><a href="./personal-data.php">Book A Flight</a></li>
         <li style="float:right"><a href="./contact.php">Contact</a></li>
     </ul>
+      <div class="divTable" style="margin-top:14rem;">
+          <span>Customer Search</span>
+          <hr />
+      <form onsubmit="handlesubmit()" method="POST" action="./api/apiGetCustomerByEmail.php">
+        <div class="row">
+          <div class="col-25" >
+            <label for="emailF">Search Customer By Email</label>
+          </div>
+          <div class="col-25">
+            <input type="text" id="emailF" name="emailF" placeholder="Enter email..">
+          </div>
+          <div class="col-25">
+          </div>
+          <div class="col-25">
+            <input style="width:100%;float:right;margin:auto;" type="submit" value="Submit" >
+          </div>
+        </div>
+      </form>
+    </div>
         <?php
       require_once 'env.php';
       //Open Connection
@@ -32,7 +51,7 @@
       $result = pg_query($dbconn, $sql) ;
       //Check results
       if ($result) {
-        $seconds = $mil / 1000;
+        $seconds = $milliseconds / 1000;
         $toDate = date("d/m/Y H:i:s", $seconds);
         // var_dump($result);
         echo "<div class='divTable'>";

@@ -20,39 +20,40 @@ function getCustomerId() {
     xhr.send();
   }));
 }
-// var ENGLISH = {};
-// "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-//   .split("")
-//   .forEach(function (ch) {
-//     ENGLISH[ch] = true;
-//   });
+var ENGLISH = {};
+"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+  .split("")
+  .forEach(function (ch) {
+    ENGLISH[ch] = true;
+  });
 
-// function stringIsEnglish(str) {
-//   var index;
+function stringIsEnglish(str) {
+  var index;
 
-//   for (index = str.length - 1; index >= 0; --index) {
-//     if (!ENGLISH[str.substring(index, index + 1)]) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
-// if (!stringIsEnglish(lname.value)) alert("english only");
-// if (!stringIsEnglish(fname.value)) alert("english only");
+  for (index = str.length - 1; index >= 0; --index) {
+    if (!ENGLISH[str.substring(index, index + 1)]) {
+      return false;
+    }
+  }
+  return true;
+}
+
 async function handleSubmit() {
+  if (!stringIsEnglish(lname.value)) alert("english only");
+  if (!stringIsEnglish(fname.value)) alert("english only");
+
   if (
     document.getElementById("countryTO").value ===
       document.getElementById("countryFROM").value ||
     document.getElementById("dateTo").value ===
-    document.getElementById("dateFrom").value
-    // ||
-    // document.getElementById("dateTo").value >
-    //   document.getElementById("dateFrom").value
+      document.getElementById("dateFrom").value ||
+    document.getElementById("dateTo").value >
+      document.getElementById("dateFrom").value
   ) {
     alert("FUCK!");
   } else {
     const customerId = await getCustomerId().then((obj) => {
-      return await obj;
+      return obj;
     });
     const customer = await getCustomer().then((obj) => {
       return obj;
@@ -64,6 +65,7 @@ async function handleSubmit() {
       element.setAttribute("action", "./api/apiFlight.php");
       return;
     } else {
+      alert(customer);
       element.setAttribute("action", "./api/apiUser.php");
       alert(
         "Thanks! mr: " +

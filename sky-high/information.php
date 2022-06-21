@@ -94,7 +94,8 @@
     </div>
 
   </div>
-  </form>
+</form>
+</div>
 
   <div class="divTable">
     <span>UPDATE BY ID</span>

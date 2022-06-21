@@ -1,3 +1,17 @@
+                                        -->Create table customers
+
+CREATE TABLE customers (
+	customer_name VARCHAR ( 50 ) NOT NULL,
+	customer_phone VARCHAR ( 25 ) NOT NULL,
+	customer_id_card VARCHAR (25) PRIMARY KEY,
+	customer_mail VARCHAR (40) NOT NULL,
+	customer_address VARCHAR (50) NOT NULL,
+	customer_created_on BIGINT
+);
+INSERT INTO customers(customer_name,customer_phone,customer_id_card,customer_mail,customer_address,customer_created_on) VALUES ('kostas','+302104343333','mppl21050','asd@asdfor.com','sky-high',1655799125366);
+
+
+select * from customers;
 
                                         -->Create table airplanes
 CREATE TABLE airplanes (
@@ -26,19 +40,6 @@ select * from  airplanes;
 -- select plane_name from airplanes ORDER BY random() limit 1
 
 
-                                        -->Create table customers
-
-CREATE TABLE customers (
-	customer_name VARCHAR ( 50 ) NOT NULL,
-	customer_phone VARCHAR ( 25 ) NOT NULL,
-	customer_id_card VARCHAR (25) PRIMARY KEY,
-	customer_mail VARCHAR (40) NOT NULL,
-	customer_address VARCHAR (50) NOT NULL,
-	customer_created_on BIGINT
-);
-
-
-select * from customers;
 
 -- CREATE TABLE tickets (
 -- 	passenger_id_card VARCHAR (25),

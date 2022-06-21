@@ -263,7 +263,7 @@ function handlePrint() {
 </script>
 
 <script type="text/javascript" src="./javascript/rndDataScript.js"></script>
-<script type="text/javascript" src="./javascript/validations.js"></script>
+<script type="text/javascript" src="./javascript/val.js"></script>
 
 </body>
 </html>
