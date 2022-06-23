@@ -14,7 +14,7 @@
     $sql = "INSERT INTO customers(customer_name,customer_phone,customer_id_card,customer_mail,customer_address,customer_created_on) VALUES ('".$_POST['lastName']."','".$_POST['phone']."','".$_POST['idCard']."','".$_POST['mail']."','".$_POST['userAddress']."',$milliseconds)";
     // echo $sql;
     $result = pg_query($dbconn, $sql) ;
-    if (!$result) {
+    if ($result) {
     $passengerId= $_POST['idCard'];
     $passengerPhone = $_POST['phone'];
     $passengerName= $_POST['lastName'];
@@ -23,12 +23,12 @@
     //Sql query
     $sqlt = "INSERT INTO tickets(passenger_id_card,passenger_name,passenger_phone,ticket_id,ticket_price) VALUES ('".$_POST['idCard']."','".$_POST['lastName']."','".$_POST['phone']."','".$_POST['ticketId']."','".$_POST['myPrice']."')";
     // echo $sql;
-    $result = pg_query($dbconn, $sqlt);
+    $resultt = pg_query($dbconn, $sqlt);
     //Check results
-    if ($result) {
+    if ($resultt) {
                 echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                 <p>$passengerId ticket αποθηκευση οκ
-                <p>$passengerId υπάρχει ήδη στη λίστα
+                <p>$passengerId ειναι καινουργιος</p>
                 </p> <br>
                 <a href='../personal-data.php'>Back</a>
                 </div>

@@ -23,6 +23,7 @@
         if ($result) {
                     echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                     <p>$passengerId ticket αποθηκευση οκ
+                    <p?>$passengerId ειναι ήδη στη λίστα</p>
                     </p> <br>
                     <a href='../personal-data.php'>Back</a>
                     </div>
