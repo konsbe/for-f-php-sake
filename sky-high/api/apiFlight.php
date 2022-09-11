@@ -1,7 +1,7 @@
 <?php
+    function bookAflight(){
     require_once '../env.php';
     //Open Connection
-    function bookAflight(){
         $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE." password=".DB_PASS." user=".DB_USER." options='--client_encoding=UTF8'";
         $dbconn = pg_connect($connecionstr);
         $milliseconds = floor(microtime(true) * 1000);
@@ -14,7 +14,7 @@
         $passengerPhone = $_POST['phone'];
         $passengerName= $_POST['lastName'];
         $fare= $_POST['sheetCategory'];
-        $flights= $_POST['countryTO'] . $_POST['countryFROM'];
+        $flights= $_POST['countryTO'] .' ' . $_POST['countryFROM'];
 
         //Sql query
         $sqlt = "INSERT INTO tickets(ticket_no, passenger_id, flights, amount, fare) 
@@ -42,7 +42,6 @@
         //Close connection
         pg_close($dbconn);
     }
-    bookAflight();
 ?>
 
 

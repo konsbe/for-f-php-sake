@@ -21,7 +21,7 @@
 
 <div class="container"style="margin-bottom:5rem;margin-top:5rem;" >
   <h4 style="margin-top:3rem;margin-bottom:2rem;border-bottom: 1px solid;">Personal Informations</h4>
-  <form id="myForm" method="POST" action="../api/apiUser.php">
+  <form id="myForm" method="POST" action="../api/apiGetCustomerId.php">
     <div class="row">
       <div class="col-25">
         <label for="fname">First Name</label>
