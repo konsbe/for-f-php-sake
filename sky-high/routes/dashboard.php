@@ -47,7 +47,7 @@
         die("Connection failed: " . pg_connect_error());
       }
       //Sql query
-      $sql = " SELECT * FROM customers;";
+      $sql = " SELECT * FROM passengers;";
       $result = pg_query($dbconn, $sql) ;
       //Check results
       if ($result) {
@@ -58,9 +58,10 @@
         echo " <h4 style='margin-top:6rem;margin-bottom: 3rem;'>Οι πελάτες μας</h4>";
         echo "<table id='flyghts'>";
         echo "  <tr>
+          <th>Serial</th>
+          <th>Id card</th>
           <th>Name</th>
           <th>Phone</th>
-          <th>Id card</th>
           <th>@email</th>
           <th>adress</th>
           <th>Created on</th>
@@ -72,6 +73,7 @@
           <td>$column[2]</td>
           <td>$column[3]</td>
           <td>$column[4]</td>
+          <td>$column[5]</td>
           <td>$toDate</td>
           </tr>
         ";
@@ -102,11 +104,12 @@
       echo " <h4 style='margin-top:6rem;margin-bottom: 3rem;'>Εισητήρια</h4>";
       echo "<table id='flyghts'>";
       echo "  <tr>
-        <th>Passenger ID</th>
-        <th>Passenger Name</th>
-        <th>Passenger Phone</th>
-        <th>Ticket ID</th>
-        <th>Ticket Price</th>
+        <th>Serial</th>
+        <th>Ticket No</th>
+        <th>Passenger Id</th>
+        <th>Flights</th>
+        <th>Amount</th>
+        <th>Fare</th>
       </tr>";
       while ($column = pg_fetch_row($result)) {
       echo "<tr>
@@ -115,6 +118,7 @@
         <td>$column[2]</td>
         <td>$column[3]</td>
         <td>$column[4]</td>
+        <td>$column[5]</td>
         </tr>
       ";
     }

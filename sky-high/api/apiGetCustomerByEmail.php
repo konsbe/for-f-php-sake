@@ -11,7 +11,7 @@
       }
 
       //Sql query
-      $sql = "SELECT * from customers WHERE customer_mail LIKE '".$_POST['emailF']."';";
+      $sql = "SELECT * from passengers WHERE passenger_mail LIKE '".$_POST['emailF']."';";
       $result = pg_query($dbconn, $sql) ;
       //Check results
       if ($result) {
@@ -22,7 +22,7 @@
         // var_dump($result);
            echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;top:50%;text-align: center;'>
                 <p>O πελάτης που Ψαχνεις</p> <br>
-                <a href='../dashboard.php'>Back</a>
+                <a href='../routes/dashboard.php'>Back</a>
                 </div>";
         echo "<div  class='divTable'>";
         echo "<table  style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;' id='flyghts'>";
@@ -49,7 +49,7 @@
     } }else {
       echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;top:50%;text-align: center;'>
                 <p>Δε βρέθηκε ο πελάτης που Ψαχνεις</p> <br>
-                <a href='../dashboard.php'>Back</a>
+                <a href='../routes/dashboard.php'>Back</a>
                 </div>";
       die('Query failed: ' . pg_last_error());
     }

@@ -172,7 +172,7 @@
         die("Connection failed: " . pg_connect_error());
       }
       //Sql query
-      $sql = "select plane_name from  airplanes;";
+      $sql = "select aircraft_model from  aircrafts;";
       $result = pg_query($dbconn, $sql) ;
       //Check results
       if ($result) {

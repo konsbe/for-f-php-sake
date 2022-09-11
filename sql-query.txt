@@ -1,3 +1,4 @@
+                                        -->Create table airports
 create table airports (	
 	id serial,
 	airport_code varchar(3) unique not null,
@@ -6,7 +7,10 @@ create table airports (
 	airport_timezone varchar not null,
 	primary key(airport_code, airport_name, airport_city, airport_timezone)
 	);
+
+
 	
+                                        -->Create table aircrafts
 create table aircrafts (	
 	id serial,
 	aircraft_code varchar(3) unique not null,
@@ -16,6 +20,7 @@ create table aircrafts (
 	primary key(aircraft_code)
 	);
 
+                                        -->Create table flights
 CREATE TYPE tf_status AS ENUM ('Scheduled', 'OnTime', 'Delayed', 'Departed', 'Arrived','Cancelled');
 
 create table flights (	
@@ -43,15 +48,20 @@ create table flights (
 			references  airports(airport_code)
 
 	);
-	
-create table passengers(
-	id serial,
-	passenger_id varchar unique not null,
-	passenger_name varchar unique not null,
-	contact_data varchar not null,
-	primary key(passenger_id)
-	);
 
+
+                                        -->Create table passengers
+ create table passengers(
+ 	id serial,
+ 	passenger_id varchar unique not null,
+ 	passenger_name varchar unique not null,
+ 	passenger_phone varchar not null,
+ 	passenger_mail varchar not null,
+ 	passenger_address varchar not null,
+ 	passenger_created_on varchar not null,
+ 	primary key(passenger_id)
+	);
+                                        -->Create table tickets
 CREATE TYPE tt_fare AS ENUM ('Economy', 'Business', 'First Class');
 
 create table tickets(
@@ -64,6 +74,9 @@ create table tickets(
 	primary key(ticket_no)
 	);
 
+
+
+                                        -->Create table book
 create table book(
 	id serial,
 	book_ref varchar unique not null,
@@ -74,6 +87,7 @@ create table book(
 );
 
 
+                                        -->Create table passenger_flight
 create table passenger_flight(
 	id serial,
 	passenger_id varchar not null,
@@ -100,6 +114,7 @@ create table passenger_flight(
 
 
 
+                                        -->Create table boarding_pass
 create table boarding_pass (
 	boarding_no numeric default null,
 	seat_no numeric default null,
@@ -114,6 +129,39 @@ create table boarding_pass (
 			references passengers(passenger_id)		
 	);
 
+                                        -->Insert Values Into tables
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values (123, 123, 123, 'UTC');
+
+insert into passengers(passenger_id, passenger_name, passenger_phone, passenger_mail,passenger_address,
+ 					  passenger_created_on)
+values ('asd', 'asd','asd@asd.com', 'asd','asd',1655799125366);
+
+insert into flights(
+	flight_no, departure_date, 
+	arrival_date,departure_airport,
+	arrival_airport, aircraft_code,
+	distance,scheduled_departed_time,
+	scheduled_arrival_time,scheduled_duration,
+	actual_arrival_time, actual_duration,
+	flight_status
+	) values (123,123,1234,123,456,123,34,99,100,1,100,1,'Scheduled');
+
+insert into tickets(ticket_no, passenger_id, flights, amount, fare) 
+values(1234567890125,'asd','123','45','Economy');
+
+insert into book(book_ref, book_date, tickets, passengers_names)
+values (1235,123,1234567890125,'asd');
+
+insert into passenger_flight(passenger_id, flight_no, ticket_no, book_date, book_ref, price)
+values('asd',123,1234567890125,123,1235,45);
+
+
+
+
+
+
+
                                         -->Create table customers
 
 CREATE TABLE customers (
@@ -126,30 +174,7 @@ CREATE TABLE customers (
 );
 INSERT INTO customers(customer_name,customer_phone,customer_id_card,customer_mail,customer_address,customer_created_on) VALUES ('kostas','+302104343333','mppl21050','asd@asdfor.com','sky-high',1655799125366);
 
-
-select * from customers;
-
-                                        -->Create table airplanes
-CREATE TABLE airplanes (
- 	plane_id serial PRIMARY KEY,
- 	plane_name VARCHAR ( 50 ) NOT NULL,
- 	distance numeric NOT NULL
- );
-
-
-                                        -->Delete from airplanes
-DELETE FROM airplanes
-    WHERE plane_id = 123;
-
-                                        -->Update from airplanes
-UPDATE airplanes
-    SET plane_name = 'asd',
-        distance = 1000
-    WHERE plane_id=5557;
-
-                                        -->Select all from airplanes
-select * from  airplanes;
-
+---------------------------------------------------------------------------------
 
 -- select plane_name from  airplanes;
 -- select plane_name from airplanes where random() < (SELECT count(*) FROM airplanes);
