@@ -21,15 +21,16 @@ function getCustomer() {
     xhr.send();
   }));
 }
-function getCustomerId() {
+function getCustomerId(idCard) {
   return (promise = new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
       resolve(this.responseText);
     };
     xhr.onerror = reject;
-    xhr.open("GET", "./api/apiGetCustomerId.php", true);
-    xhr.send();
+    xhr.open("GET", "../api/apiGetCustomerId.php", true);
+    // xhr.send();
+    xhr.send("idCard=" + idCard);
   }));
 }
 let randomTime = async () => {
@@ -49,7 +50,11 @@ const getRandoms = async () => {
   var resultTime = await randomTime();
   var resultTimeTwo = await randomTime();
   var station = "AWS";
+  let idCard = document.getElementById("idCard");
   const data = await getPlanes().then((obj) => console.log("obj  ", obj));
+  const data2 = await getCustomerId(idCard.value).then((obj) =>
+    console.log("obj2  ", obj)
+  );
   // console.log("data: ", data);
   let priceElement = document.getElementById("myPrice");
   let ticketElement = document.getElementById("ticketId");

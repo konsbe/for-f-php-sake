@@ -11,7 +11,7 @@
       }
 
       //Sql query
-      $sql = "SELECT customer_id_card from customers WHERE customer_id_card LIKE '".$_POST['idCard']."';";
+      $sql = "SELECT customer_id_card from customers WHERE customer_id_card LIKE '".$_GET['idCard']."';";
       $result = pg_query($dbconn, $sql) ;
       //Check results
       if ($result) {
@@ -23,6 +23,6 @@
     } else {
       die('Query failed: ' . pg_last_error());
     }
-    //Close connection
+   //Close connection
     pg_close($dbconn);
     ?>

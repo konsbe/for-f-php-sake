@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
       <div class="divTable" style="margin-top:14rem;">
           <span>Customer Search</span>
           <hr />
-      <form onsubmit="handlesubmit()" method="POST" action="./api/apiGetCustomerByEmail.php">
+      <form onsubmit="handlesubmit()" method="POST" action="../api/apiGetCustomerByEmail.php">
         <div class="row">
           <div class="col-25" >
             <label for="emailF">Search Customer By Email</label>
@@ -36,7 +36,7 @@
       </form>
     </div>
         <?php
-      require_once 'env.php';
+      require_once '../env.php';
       //Open Connection
       $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE." password=".DB_PASS." user=".DB_USER." options='--client_encoding=UTF8'";
       $dbconn = pg_connect($connecionstr);

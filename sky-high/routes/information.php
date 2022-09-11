@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <title>Information</title>
 
 </head>
@@ -19,7 +19,7 @@
     </ul>
 </div>
     <?php
-      require_once 'env.php';
+      require_once '../env.php';
       //Open Connection
       $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE." password=".DB_PASS." user=".DB_USER." options='--client_encoding=UTF8'";
       $dbconn = pg_connect($connecionstr);
@@ -64,7 +64,7 @@
         <div class="divTable">
           <span>CREATE NEW</span>
           <hr />
-          <form onsubmit="handlesubmit()" method="POST" action="./api/apiAircraft.php">
+          <form onsubmit="handlesubmit()" method="POST" action="../api/apiAircraft.php">
         <div class="row">
           <div class="col-25" >
             <label for="idPlane">Aircraft ID</label>
@@ -100,7 +100,7 @@
   <div class="divTable">
     <span>UPDATE BY ID</span>
     <hr/>
-    <form onsubmit="handlesubmit()" method="POST" action="./api/apiUpdateAircraft.php" style="margin-bottom:3rem;">
+    <form onsubmit="handlesubmit()" method="POST" action="../api/apiUpdateAircraft.php" style="margin-bottom:3rem;">
     <div class="row">
       <div class="col-25" >
         <label for="idPlaneUpdate">Aircraft ID</label>
@@ -135,7 +135,7 @@
   <span>DELETE BY ID</span>
   <hr/>
 
-  <form onsubmit="handlesubmit()" method="POST" action="./api/apiDeleteAircraft.php" style="margin-bottom:3rem;" >
+  <form onsubmit="handlesubmit()" method="POST" action="../api/apiDeleteAircraft.php" style="margin-bottom:3rem;" >
     <div class="row">
       <div class="col-25">
         <label for="planeDelete">Aircraft ID</label>

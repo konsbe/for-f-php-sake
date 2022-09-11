@@ -1,3 +1,119 @@
+create table airports (	
+	id serial,
+	airport_code varchar(3) unique not null,
+	airport_name varchar not null,
+	airport_city varchar not null,
+	airport_timezone varchar not null,
+	primary key(airport_code, airport_name, airport_city, airport_timezone)
+	);
+	
+create table aircrafts (	
+	id serial,
+	aircraft_code varchar(3) unique not null,
+	airport_model varchar not null,
+	capacity integer not null,
+	range numeric not null,
+	primary key(aircraft_code)
+	);
+
+CREATE TYPE tf_status AS ENUM ('Scheduled', 'OnTime', 'Delayed', 'Departed', 'Arrived','Cancelled');
+
+create table flights (	
+	id serial,
+	flight_no bigint unique not null,
+	departure_date bigint not null,
+	arrival_date bigint not null,
+	departure_airport varchar not null,
+	arrival_airport varchar not null,
+	aircraft_code varchar references aircrafts(aircraft_code) not null, --for the model
+	distance decimal not null,
+	scheduled_departed_time bigint not null,
+	scheduled_arrival_time bigint not null,
+	scheduled_duration bigint  not null,
+	actual_departure_time bigint default null,
+	actual_arrival_time bigint default null,
+	actual_duration bigint default null,
+	flight_status TF_STATUS  default 'Scheduled' not null,
+	primary key(flight_no),
+	constraint fk_dep_airport
+		foreign key(departure_airport)
+			references  airports(airport_code),
+	constraint fk_ar_airport
+		foreign key(arrival_airport)
+			references  airports(airport_code)
+
+	);
+	
+create table passengers(
+	id serial,
+	passenger_id varchar unique not null,
+	passenger_name varchar unique not null,
+	contact_data varchar not null,
+	primary key(passenger_id)
+	);
+
+CREATE TYPE tt_fare AS ENUM ('Economy', 'Business', 'First Class');
+
+create table tickets(
+	id serial,
+	ticket_no numeric(13) unique not null,
+	passenger_id varchar not null,
+	flights varchar not null,
+	amount varchar not null,
+	fare tt_fare not null,
+	primary key(ticket_no)
+	);
+
+create table book(
+	id serial,
+	book_ref varchar unique not null,
+	book_date bigint not null,
+	tickets varchar not null, --retrieve from passenger-flights
+	passengers_names varchar not null, --retrieve from passenger-flights	
+	primary key(book_ref)
+);
+
+
+create table passenger_flight(
+	id serial,
+	passenger_id varchar not null,
+	flight_no bigint not null,
+	ticket_no bigint not null,
+	book_date bigint not null,
+	book_ref varchar not null,
+	price decimal not null,
+	primary key(passenger_id, flight_no, ticket_no, book_date),
+	constraint fk_flight_no
+		foreign key(flight_no)
+			references flights(flight_no),
+	constraint fk_ticket_no
+		foreign key(ticket_no)
+			 references tickets(ticket_no),
+	constraint fk_passenger_id
+		foreign key(passenger_id)
+			  references passengers(passenger_id),
+	constraint fk_book_ref
+		foreign key(book_ref)
+			  references book(book_ref)
+	);
+
+
+
+
+create table boarding_pass (
+	boarding_no numeric default null,
+	seat_no numeric default null,
+	ticket_no bigint not null,
+	passenger_id varchar not null,
+	primary key(boarding_no, ticket_no, passenger_id),
+	constraint fk_ticket_no
+		foreign key(ticket_no)
+			references tickets(ticket_no),
+	constraint fk_passenger_id
+		foreign key(passenger_id)
+			references passengers(passenger_id)		
+	);
+
                                         -->Create table customers
 
 CREATE TABLE customers (

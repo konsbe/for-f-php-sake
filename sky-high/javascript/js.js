@@ -1,31 +1,45 @@
-// function getCustomer() {
-//   return (promise = new Promise(function (resolve, reject) {
+async function getCustomer() {
+  const promise = new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      resolve(this.responseText);
+    };
+    xhr.onerror = reject;
+    xhr.open("GET", "../api/apiGetCustomer.php", true);
+    xhr.send();
+  });
+  promise().then((reps) => {
+    return reps;
+  });
+}
+async function getCustomerId() {
+  return (promise = new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      resolve(this.responseText);
+    };
+    xhr.onerror = reject;
+    xhr.open("GET", "../api/apiGetCustomerId.php", true);
+    xhr.send();
+  }));
+}
+
+// async function getCustomerId() {
+//   const promise = new Promise(function (resolve, reject) {
 //     var xhr = new XMLHttpRequest();
+//     xhr.open("GET", "./api/apiGetCustomerId.php", true);
+//     xhr.send("idCard=" + idCard);
 //     xhr.onload = function () {
 //       resolve(this.responseText);
 //     };
 //     xhr.onerror = function () {
-//       reject(this.responseError);
+//       reject;
 //     };
-//     xhr.open("GET", "./api/apiGetCustomer.php", true);
-//     xhr.send();
-//   }));
+//   });
+//   const result = await promise;
+//   console.log("result", result);
+//   return result;
 // }
-function getCustomerId() {
-  // return (promise = await new Promise(function (resolve, reject) {
-  var xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    console.log(xhr.responseText);
-    console.log(this.responseText);
-    return this.responseText;
-  };
-  xhr.onerror = function () {
-    return false;
-  };
-  xhr.open("GET", "./api/apiGetCustomerId.php", true);
-  xhr.send();
-  // }));
-}
 var ENGLISH = {};
 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
   .split("")
@@ -44,7 +58,7 @@ function stringIsEnglish(str) {
   return true;
 }
 
-async function handleSubmit() {
+const handleSubmit = async () => {
   if (!stringIsEnglish(lname.value)) alert("english only");
   if (!stringIsEnglish(fname.value)) alert("english only");
 
@@ -56,28 +70,28 @@ async function handleSubmit() {
     document.getElementById("dateTo").value >
       document.getElementById("dateFrom").value
   ) {
-    alert("Error on Dates or Days!");
+    alert("FUCK!");
   } else {
-    const customerId = getCustomerId().then((obj) => {
+    const customerId = getCustomer().then((obj) => {
+      console.log("customerId:  ", obj);
       return obj;
     });
 
     // const customer = getCustomer().then((obj) => {
-    //   console.log(obj);
     //   return obj;
     // });
-    // console.log("customer", customer);
-    console.log("customerId", customerId);
-    // console.log(customer);
+    console.log(
+      customerId.then((obj) => {
+        return obj;
+      })
+    );
     element = document.getElementById("myForm");
     element.setAttribute("method", "POST");
     if (customerId) {
-      alert("Thanks customer");
-      element.setAttribute("action", "./api/apiFlight.php");
+      element.setAttribute("action", "../api/apiFlight.php");
       return;
     } else {
-      alert("Thanks new customer");
-      element.setAttribute("action", "./api/apiUser.php");
+      element.setAttribute("action", "../api/apiUser.php");
       alert(
         "Thanks! mr: " +
           fname.value +
@@ -120,4 +134,4 @@ async function handleSubmit() {
       );
     }
   }
-}
+};

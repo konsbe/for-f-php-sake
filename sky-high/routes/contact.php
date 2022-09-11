@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <title>Contact</title>
 
 </head>
@@ -20,7 +20,7 @@
 
 <div class="container" style="margin-top:3rem;">
   <!-- <form  onsubmit="myFunction().then(handleResetForm())"> -->
-  <form  method="post" action="./api/apiContact.php">
+  <form  method="post" action="../api/apiContact.php">
   <div class="row">
     <div class="col-25">
       <label for="fname">First Name</label>

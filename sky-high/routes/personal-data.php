@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <title>Book Flight</title>
 </head>
 <body>
@@ -161,7 +161,7 @@
         <select id="aircraft" name="aircraft" >
       <?php
       function phpfunction() {
-      require_once 'env.php';
+      require_once '../env.php';
       //Open Connection
       $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE." password=".DB_PASS." user=".DB_USER." options='--client_encoding=UTF8'";
       $dbconn = pg_connect($connecionstr);
@@ -262,8 +262,8 @@ function handlePrint() {
 // });
 </script>
 
-<script type="text/javascript" src="./javascript/rndDataScript.js"></script>
-<script type="text/javascript" src="./javascript/val.js"></script>
+<script type="text/javascript" src="../javascript/rndDataScript.js"></script>
+<script type="text/javascript" src="../javascript/js.js"></script>
 
 </body>
 </html>
