@@ -14,8 +14,9 @@
     $idPlane= $_POST['idPlane'];
     $planeCompany = $_POST['planeCompany'];
     $planeDistance= $_POST['planeDistance'];
+    $planeCapacity= $_POST['planeCapacity'];
     //Sql query
-    $sql = "INSERT INTO airplanes(plane_id,plane_name,distance) VALUES ('".$_POST['idPlane']."','".$_POST['planeCompany']."','".$_POST['planeDistance']."')";
+    $sql = "INSERT INTO aircrafts(aircraft_code,aircraft_model,capacity,range) VALUES ('".$_POST['idPlane']."','".$_POST['planeCompany']."','".$_POST['planeCapacity']."','".$_POST['planeDistance']."')";
     // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     //Check results

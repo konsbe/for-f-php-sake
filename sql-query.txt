@@ -10,7 +10,7 @@ create table airports (
 create table aircrafts (	
 	id serial,
 	aircraft_code varchar(3) unique not null,
-	airport_model varchar not null,
+	aircraft_model varchar not null,
 	capacity integer not null,
 	range numeric not null,
 	primary key(aircraft_code)

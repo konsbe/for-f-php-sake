@@ -30,7 +30,7 @@
         die("Connection failed: " . pg_connect_error());
       }
       //Sql query
-      $sql = " SELECT * FROM airplanes;";
+      $sql = " SELECT * FROM aircrafts;";
       $result = pg_query($dbconn, $sql) ;
       //Check results
       if ($result) {
@@ -40,15 +40,19 @@
         echo " <h4 style='margin-top:6rem;margin-bottom: 3rem;'>Εταιρείες που συνεργαζόμαστε</h4>";
         echo "<table id='flyghts'>";
         echo "  <tr>
+          <th>Serial</th>
           <th>ID</th>
           <th>Company</th>
+          <th>Capacity</th>
           <th>Distance</th>
         </tr>";
         while ($row = pg_fetch_row($result)) {
         echo "<tr>
           <td>$row[0]</td>
           <td>$row[1]</td>
-          <td>$row[2] <span style='float:right'>km</span></td>
+          <td>$row[2]</td>
+          <td>$row[3]</td>
+          <td>$row[4] <span style='float:right'>km</span></td>
         </tr>
         ";
       }
@@ -86,6 +90,14 @@
       <div class="col-25">
         <input type="text" id="planeDistance" name="planeDistance" placeholder="Plane Max. Distance..">
       </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="planeCapacity">Capacity</label>
+      </div>
+      <div class="col-25">
+        <input type="text" id="planeCapacity" name="planeCapacity" placeholder="Plane Max. Capacity..">
+      </div>
       <div class="col-25">
         </div>
         <div class="col-25">
@@ -103,29 +115,44 @@
     <form onsubmit="handlesubmit()" method="POST" action="../api/apiUpdateAircraft.php" style="margin-bottom:3rem;">
     <div class="row">
       <div class="col-25" >
-        <label for="idPlaneUpdate">Aircraft ID</label>
-      </div>
-      <div class="col-25">
+        <label for="idAircaftSerial">Aircraft Serial</label>
+        </div>
+        <div class="col-25">
+          <input type="text" id="idAircaftSerial" name="idAircaftSerial" placeholder="Aircraft Serial to Update..">
+          </div>
+          <div class="col-25" style="padding-left:1rem;">
+            <label for="idPlaneUpdate">Aircraft ID</label>
+        </div>
+        <div class="col-25">
         <input type="text" id="idPlaneUpdate" name="idPlaneUpdate" placeholder="Aircraft Id to Update..">
+        </div>
       </div>
-      <div class="col-25" style="padding-left:1rem;">
-        <label for="planeCompanyUpdate">New Company</label>
-      </div>
-      <div class="col-25">
+      <div class="row">
+        <div class="col-25">
+          <label for="planeCompanyUpdate">New Company</label>
+        </div>
+        <div class="col-25">
         <input type="text" id="planeCompanyUpdate" name="planeCompanyUpdate" placeholder="New Plane Name..">
       </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
+      <div class="col-25" style="padding-left:1rem;">
         <label for="planeDistanceUpdate">New Distance</label>
       </div>
+      <div class="col-25" >
+              <input type="text" id="planeDistanceUpdate" name="planeDistanceUpdate" placeholder="New Plane Max. Distance..">
+        </div>
+        
+      </div>
+        <div class="row">
       <div class="col-25">
-        <input type="text" id="planeDistanceUpdate" name="planeDistanceUpdate" placeholder="New Plane Max. Distance..">
+        <label for="planeCapacityUpdate">Capacity</label>
       </div>
       <div class="col-25">
+        <input type="text" id="planeCapacityUpdate" name="planeCapacityUpdate" placeholder="Plane Max. Capacity..">
       </div>
       <div class="col-25">
-        <input style="width:100%;float:right;background-color:blue;" type="submit" value="Update" >
+        </div>
+        <div class="col-25">
+          <input style="width:100%;float:right;background-color:blue;" type="submit" value="Update" >
       </div>
     </div>
   </form>

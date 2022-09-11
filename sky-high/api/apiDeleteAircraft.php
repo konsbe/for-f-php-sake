@@ -11,20 +11,20 @@
     }
     $id=$_POST['planeDelete'];
     //Sql query
-    $sql = "DELETE FROM airplanes WHERE plane_id='$id'";
+    $sql = "DELETE FROM aircrafts WHERE aircraft_code='$id'";
     // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     //Check results
     if ($result) {
                 echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                 <p>επιτυχής διαγραφή του $id</p> <br>
-                <a href='../information.php'>Back</a>
+                <a href='../routes/information.php'>Back</a>
                 </div>
 ";
     } else {
                     echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                     <p>Error: στη διαγραφή του $id</p> <br>
-                    <a href='../information.php'>Back</a>
+                    <a href='../routes/information.php'>Back</a>
                     </div>
 ";
         die('Query failed: ' . pg_last_error());
