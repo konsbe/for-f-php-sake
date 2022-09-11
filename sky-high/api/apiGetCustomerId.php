@@ -11,7 +11,7 @@
       }
 
       //Sql query
-      $sql = "SELECT customer_id_card from customers WHERE customer_id_card LIKE '".$_GET['idCard']."';";
+      $sql = "SELECT passenger_id_card from passengers WHERE passenger_id_card LIKE '".$_GET['idCard']."';";
       $result = pg_query($dbconn, $sql) ;
       //Check results
       if ($result) {

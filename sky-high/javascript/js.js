@@ -24,22 +24,6 @@ async function getCustomerId() {
   }));
 }
 
-// async function getCustomerId() {
-//   const promise = new Promise(function (resolve, reject) {
-//     var xhr = new XMLHttpRequest();
-//     xhr.open("GET", "./api/apiGetCustomerId.php", true);
-//     xhr.send("idCard=" + idCard);
-//     xhr.onload = function () {
-//       resolve(this.responseText);
-//     };
-//     xhr.onerror = function () {
-//       reject;
-//     };
-//   });
-//   const result = await promise;
-//   console.log("result", result);
-//   return result;
-// }
 var ENGLISH = {};
 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
   .split("")
@@ -58,7 +42,7 @@ function stringIsEnglish(str) {
   return true;
 }
 
-const handleSubmit = async () => {
+export const handleSubmit = async () => {
   if (!stringIsEnglish(lname.value)) alert("english only");
   if (!stringIsEnglish(fname.value)) alert("english only");
 
@@ -72,14 +56,10 @@ const handleSubmit = async () => {
   ) {
     alert("FUCK!");
   } else {
-    const customerId = getCustomer().then((obj) => {
+    const customerId = await getCustomer().then((obj) => {
       console.log("customerId:  ", obj);
       return obj;
     });
-
-    // const customer = getCustomer().then((obj) => {
-    //   return obj;
-    // });
     console.log(
       customerId.then((obj) => {
         return obj;
@@ -88,9 +68,12 @@ const handleSubmit = async () => {
     element = document.getElementById("myForm");
     element.setAttribute("method", "POST");
     if (customerId) {
+      // alert("FUCK YOU");
+      // return "../api/apiFlight.php";
       element.setAttribute("action", "../api/apiFlight.php");
       return;
     } else {
+      // return "../api/apiUser.php";
       element.setAttribute("action", "../api/apiUser.php");
       alert(
         "Thanks! mr: " +
@@ -132,6 +115,7 @@ const handleSubmit = async () => {
           "price: " +
           document.getElementById("myPrice").children[0].innerHTML
       );
+      return;
     }
   }
 };

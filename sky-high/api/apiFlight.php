@@ -13,10 +13,12 @@
         $passengerId= $_POST['idCard'];
         $passengerPhone = $_POST['phone'];
         $passengerName= $_POST['lastName'];
-        $ticketId= $_POST['ticketId'];
-        $myPrice= $_POST['myPrice'];
+        $fare= $_POST['sheetCategory'];
+        $flights= $_POST['countryTO'] . $_POST['countryFROM'];
+
         //Sql query
-        $sqlt = "INSERT INTO tickets(passenger_id_card,passenger_name,passenger_phone,ticket_id,ticket_price) VALUES ('".$_POST['idCard']."','".$_POST['lastName']."','".$_POST['phone']."','".$_POST['ticketId']."','".$_POST['myPrice']."')";
+        $sqlt = "INSERT INTO tickets(ticket_no, passenger_id, flights, amount, fare) 
+            VALUES ('".$_POST['ticketId']."','".$_POST['idCard']."','$flights','".$_POST['myPrice']."','$fare')";
         // echo $sql;
         $result = pg_query($dbconn, $sqlt);
         //Check results
@@ -25,14 +27,14 @@
                     <p>$passengerId ticket αποθηκευση οκ
                     <p?>$passengerId ειναι ήδη στη λίστα</p>
                     </p> <br>
-                    <a href='../personal-data.php'>Back</a>
+                    <a href='../routes/personal-data.php'>Back</a>
                     </div>
         ";
         } else {
                         echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                         <p>Error: στην αποθηκευση ticket
                         </p> <br>
-                        <a href='../personal-data.php'>Back</a>
+                        <a href='../routes/personal-data.php'>Back</a>
                         </div>
         ";
             die('Query failed: ' . pg_last_error());

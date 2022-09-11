@@ -21,7 +21,7 @@
 
 <div class="container"style="margin-bottom:5rem;margin-top:5rem;" >
   <h4 style="margin-top:3rem;margin-bottom:2rem;border-bottom: 1px solid;">Personal Informations</h4>
-  <form id="myForm" >
+  <form id="myForm" method="POST" action="../api/apiUser.php">
     <div class="row">
       <div class="col-25">
         <label for="fname">First Name</label>
@@ -97,7 +97,7 @@
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="personId">Χώρα Αναχώρησης</label>
+        <label for="countryFROM">Χώρα Αναχώρησης</label>
       </div>
       <div class="col-25">
         <select id="countryFROM" name="countryFROM" >
@@ -110,7 +110,7 @@
         </select>
       </div>
       <div class="col-25">
-        <label for="personId" style="padding-left:1rem;" >Χώρα Άφιξης</label>
+        <label for="countryTO" style="padding-left:1rem;" >Χώρα Άφιξης</label>
       </div>
       <div class="col-25">
         <select id="countryTO" name="countryTO" >
@@ -125,13 +125,13 @@
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="personId">Κατηγορία</label>
+        <label for="sheetCategory">Κατηγορία</label>
       </div>
       <div class="col-25">
         <select id="sheetCategory" name="sheetCategory" >
-          <option value="economy">Economy</option>
-          <option value="business">Business</option>
-          <option value="firt class">First Class</option>
+          <option value="Economy">Economy</option>
+          <option value="Business">Business</option>
+          <option value="Firt Class">First Class</option>
         </select>
       </div>
       <div class="col-25">
@@ -263,7 +263,7 @@ function handlePrint() {
 </script>
 
 <script type="text/javascript" src="../javascript/rndDataScript.js"></script>
-<script type="text/javascript" src="../javascript/js.js"></script>
+<!-- <script type="text/javascript" src="../javascript/js.js"></script> -->
 
 </body>
 </html>

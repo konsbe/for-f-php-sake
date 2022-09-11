@@ -73,11 +73,11 @@ async function handleSubmit() {
     element.setAttribute("method", "POST");
     if (customerId) {
       alert("Thanks customer");
-      element.setAttribute("action", "./api/apiFlight.php");
+      element.setAttribute("action", "../api/apiFlight.php");
       return;
     } else {
       alert("Thanks new customer");
-      element.setAttribute("action", "./api/apiUser.php");
+      element.setAttribute("action", "../api/apiUser.php");
       alert(
         "Thanks! mr: " +
           fname.value +

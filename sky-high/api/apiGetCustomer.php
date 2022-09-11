@@ -11,7 +11,7 @@
       }
 
       //Sql query
-      $sql = "SELECT customer_name from customers WHERE customer_name LIKE '".$_POST['lastName']."';";
+      $sql = "SELECT passenger_name from passengers WHERE passenger_name LIKE '".$_POST['lastName']."';";
       $result = pg_query($dbconn, $sql) ;
       //Check results
       if ($result) {

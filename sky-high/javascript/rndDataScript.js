@@ -17,7 +17,7 @@ function getCustomer() {
       resolve(this.responseText);
     };
     xhr.onerror = reject;
-    xhr.open("GET", "./api/apiGetCustomer.php", true);
+    xhr.open("GET", "../api/apiGetCustomer.php", true);
     xhr.send();
   }));
 }

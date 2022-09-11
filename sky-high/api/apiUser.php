@@ -11,7 +11,8 @@
     }
     //Sql query
     $name=$_POST['lastName'];
-    $sql = "INSERT INTO customers(customer_name,customer_phone,customer_id_card,customer_mail,customer_address,customer_created_on) VALUES ('".$_POST['lastName']."','".$_POST['phone']."','".$_POST['idCard']."','".$_POST['mail']."','".$_POST['userAddress']."',$milliseconds)";
+    $sql = "INSERT INTO passengers(passenger_id, passenger_name,passenger_phone, passenger_mail, passenger_address, passenger_created_on)
+     VALUES ('".$_POST['idCard']."','".$_POST['lastName']."','".$_POST['phone']."','".$_POST['mail']."','".$_POST['userAddress']."',$milliseconds)";
     // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     if ($result) {
@@ -19,10 +20,13 @@
     $passengerPhone = $_POST['phone'];
     $passengerName= $_POST['lastName'];
     $ticketId= $_POST['ticketId'];
-    $myPrice= $_POST['myPrice'];
+    $fare= $_POST['sheetCategory'];
+    $flights= $_POST['countryTO'] . $_POST['countryFROM'];
     //Sql query
-    $sqlt = "INSERT INTO tickets(passenger_id_card,passenger_name,passenger_phone,ticket_id,ticket_price) VALUES ('".$_POST['idCard']."','".$_POST['lastName']."','".$_POST['phone']."','".$_POST['ticketId']."','".$_POST['myPrice']."')";
-    // echo $sql;
+    $sqlt = "INSERT INTO tickets(ticket_no, passenger_id, flights, amount, fare) 
+    VALUES ('".$_POST['ticketId']."','".$_POST['idCard']."','$flights','".$_POST['myPrice']."','$fare')";
+    // echo $sql; 
+    //insert into tickets(ticket_no, passenger_id, flights, amount, fare)values(1234567890125,'asd','123','45','Economy');
     $resultt = pg_query($dbconn, $sqlt);
     //Check results
     if ($resultt) {
@@ -30,14 +34,14 @@
                 <p>$passengerId ticket αποθηκευση οκ
                 <p>$passengerId ειναι καινουργιος</p>
                 </p> <br>
-                <a href='../personal-data.php'>Back</a>
+                <a href='../routes/personal-data.php'>Back</a>
                 </div>
     ";
     } else {
                     echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                     <p>Error: στην αποθηκευση ticket
                     </p> <br>
-                    <a href='../personal-data.php'>Back</a>
+                    <a href='../routes/personal-data.php'>Back</a>
                     </div>
     ";
         die('Query failed: ' . pg_last_error());
@@ -45,7 +49,7 @@
                             echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                     <p>Error: στην αποθηκευση ticket
                     </p> <br>
-                    <a href='../personal-data.php'>Back</a>
+                    <a href='../routes/personal-data.php'>Back</a>
                     </div>
     ";
         die('Query failed: ' . pg_last_error());
