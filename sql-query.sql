@@ -62,15 +62,15 @@ create table flights (
  	primary key(passenger_id)
 	);
                                         -->Create table tickets
-CREATE TYPE tt_fare AS ENUM ('Economy', 'Business', 'First Class');
+CREATE TYPE TT_FARE AS ENUM ('Economy', 'Business', 'First Class');
 
 create table tickets(
 	id serial,
 	ticket_no numeric(13) unique not null,
 	passenger_id varchar not null,
 	flights varchar not null,
-	amount varchar not null,
-	fare tt_fare not null,
+	tickets_price varchar not null,
+	fare varchar not null,
 	primary key(ticket_no)
 	);
 
@@ -83,6 +83,7 @@ create table book(
 	book_date bigint not null,
 	tickets varchar not null, --retrieve from passenger-flights
 	passengers_names varchar not null, --retrieve from passenger-flights	
+	amount float not null, 
 	primary key(book_ref)
 );
 
@@ -95,8 +96,11 @@ create table passenger_flight(
 	ticket_no bigint not null,
 	book_date bigint not null,
 	book_ref varchar not null,
-	price decimal not null,
-	primary key(passenger_id, flight_no, ticket_no, book_date),
+	ticket_fare TT_FARE not null,
+	ticket_price decimal not null,
+	arrival_port varchar(3) not null,
+	departure_port varchar(3) not null,
+	primary key(passenger_id, flight_no, ticket_no, book_ref,arrival_port,departure_port),
 	constraint fk_flight_no
 		foreign key(flight_no)
 			references flights(flight_no),
@@ -108,7 +112,13 @@ create table passenger_flight(
 			  references passengers(passenger_id),
 	constraint fk_book_ref
 		foreign key(book_ref)
-			  references book(book_ref)
+			  references book(book_ref),
+	constraint fk_departure_port
+		foreign key(arrival_port)
+			  references airports(airport_code),
+	constraint fk_arrival_port
+		foreign key(arrival_port)
+			  references airports(airport_code)
 	);
 
 
@@ -116,6 +126,7 @@ create table passenger_flight(
 
                                         -->Create table boarding_pass
 create table boarding_pass (
+	id serial,
 	boarding_no numeric default null,
 	seat_no numeric default null,
 	ticket_no bigint not null,
@@ -131,30 +142,73 @@ create table boarding_pass (
 
                                         -->Insert Values Into tables
 insert into airports (airport_code, airport_name, airport_city, airport_timezone)
- values (123, 123, 123, 'UTC');
+ values ('TSI', 'TSIMARI', 'Aitoliko', 'UTC');
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values ('AWS', 'AMAZON', 'To the moon', 'UTC');
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values ('BOS', 'CELTICS', 'Boston', 'UTF');
+
+                                        -->Insert Values Into tables
+insert into aircrafts (aircraft_code, aircraft_model, capacity, range)
+ values ('1A7', 'Giannis Antentokoumpo', 52, 5000000000.43);
+insert into aircrafts (aircraft_code, aircraft_model, capacity, range)
+ values ('185', 'Daka', 52, 5000000000.43);
+insert into aircrafts (aircraft_code, aircraft_model, capacity, range)
+ values ('155', 'Somo', 52, 5000000000.43);
+insert into aircrafts (aircraft_code, aircraft_model, capacity, range)
+ values ('1B7', 'Somoeno', 52, 5000000000.43);
 
 insert into passengers(passenger_id, passenger_name, passenger_phone, passenger_mail,passenger_address,
  					  passenger_created_on)
-values ('asd', 'asd','asd@asd.com', 'asd','asd',1655799125366);
+values ('am3715', 'Jim Brown', '+302104343333', 'jim@brown.com','Peiraeus State Resident 34 56',1655799125366);
+
+insert into passengers(passenger_id, passenger_name, passenger_phone, passenger_mail,passenger_address,
+ 					  passenger_created_on)
+values ('am-1121243', 'Xristos Katsimikakos', '+362102020200', 'krempek@gmail.com','Athens 36',1655799125342);
+
+insert into passengers(passenger_id, passenger_name, passenger_phone, passenger_mail,passenger_address,
+ 					  passenger_created_on)
+values ('ams23715', 'Jogn Geg', '+3621043823', 'jjjj@gmail.com','Philadelphia 56',1655799125367);
 
 insert into flights(
 	flight_no, departure_date, 
 	arrival_date,departure_airport,
 	arrival_airport, aircraft_code,
 	distance,scheduled_departed_time,
-	scheduled_arrival_time,scheduled_duration,
-	actual_arrival_time, actual_duration,
-	flight_status
-	) values (123,123,1234,123,456,123,34,99,100,1,100,1,'Scheduled');
+	scheduled_arrival_time,scheduled_duration, 
+	actual_departure_time, actual_arrival_time,
+	actual_duration, flight_status
+	) values (431267,1655799120066,1655799122366,'TSI','AWS','155',340000.89,1655799120066,1655799122366,66,1655799120266, 1655799122766, 64,'Scheduled');
+insert into flights(
+	flight_no, departure_date, 
+	arrival_date,departure_airport,
+	arrival_airport, aircraft_code,
+	distance,scheduled_departed_time,
+	scheduled_arrival_time,scheduled_duration, 
+	actual_departure_time, actual_arrival_time,
+	actual_duration, flight_status
+	) values (431297,1655799127966,1655799132366,'AWS','BOS','185',340000.89,1655799120066,1655799122366,66,1655799120266, 1655799122766, 64,'Scheduled');
 
-insert into tickets(ticket_no, passenger_id, flights, amount, fare) 
-values(1234567890125,'asd','123','45','Economy');
+insert into tickets(ticket_no, passenger_id, flights, tickets_price, fare) 
+values(1234567890125,'am3715','TSI-AWS, AWS-BOS','45, 35','Economy, Economy');
 
-insert into book(book_ref, book_date, tickets, passengers_names)
-values (1235,123,1234567890125,'asd');
+insert into book(book_ref, book_date, tickets, passengers_names,amount)
+values (1235,1655799124372,1234567890125,'Jim Brown',80);
 
-insert into passenger_flight(passenger_id, flight_no, ticket_no, book_date, book_ref, price)
-values('asd',123,1234567890125,123,1235,45);
+
+insert into passenger_flight(passenger_id, flight_no, ticket_no, book_date, book_ref, ticket_fare, ticket_price, departure_port, arrival_port)
+values('am3715',431267,1234567890125,1655799124372,1235,'Economy',45,'TSI','AWS');
+insert into passenger_flight(passenger_id, flight_no, ticket_no, book_date, book_ref, ticket_fare, ticket_price, departure_port, arrival_port)
+values('am3715',431267,1234567890125,1655799124372,1235,'Economy',35,'AWS','BOS');
+
+insert into boarding_pass(boarding_no,
+seat_no,
+ticket_no,
+passenger_id,)
+values('am3715',431267,1234567890125,1655799124372,1235,'Economy',35,'AWS','BOS');
+insert into passenger_flight(passenger_id, flight_no, ticket_no, book_date, book_ref, ticket_fare, ticket_price, departure_port, arrival_port)
+values('am3715',431267,1234567890125,1655799124372,1235,'Economy',35,'AWS','BOS');
+
 
 
 
@@ -206,34 +260,34 @@ select * from customers;
 <?php
     require_once '../env.php';
     //Open Connection
-    $connecionstr="host=".DB_SERVER." port=5432 dbname=".DB_BASE." password=".DB_PASS." user=".DB_USER." options='--client_encoding=UTF8'";
+    $connecionstr='host='.DB_SERVER.' port=5432 dbname='.DB_BASE.' password='.DB_PASS.' user='.DB_USER.' options='--client_encoding=UTF8'';
     $dbconn = pg_connect($connecionstr);
     $milliseconds = floor(microtime(true) * 1000);
 
     // Check connection
     if (!$dbconn) {
-        die("Connection failed: " . pg_connect_error());
+        die('Connection failed: ' . pg_connect_error());
     }
     //Sql query
     $name=$_POST['lastName'];
-    $sql = "INSERT INTO customers(customer_name,customer_phone,customer_id_card,customer_mail,customer_address,customer_created_on) VALUES ('".$_POST['lastName']."','".$_POST['phone']."','".$_POST['idCard']."','".$_POST['mail']."','".$_POST['userAddress']."',$milliseconds)";
+    $sql = 'INSERT INTO customers(customer_name,customer_phone,customer_id_card,customer_mail,customer_address,customer_created_on) VALUES (''.$_POST['lastName'].'',''.$_POST['phone'].'',''.$_POST['idCard'].'',''.$_POST['mail'].'',''.$_POST['userAddress'].'',$milliseconds)';
     // echo $sql;
     $result = pg_query($dbconn, $sql) ;
     //Check results
     if ($result) {
-                echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
+                echo '<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                 <p>$name αποθηκευση οκ
                 </p> <br>
                 <a href='../dashboard.php'>Back</a>
                 </div>
-";
+';
     } else {
-                    echo "<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
+                    echo '<div style='height:100px;background-color: antiquewhite;width:100%;margin:auto;position: absolute;top:50%;text-align: center;'>
                     <p>Error: στην αποθηκευση
                     </p> <br>
                     <a href='../dashboard.php'>Back</a>
                     </div>
-";
+';
         die('Query failed: ' . pg_last_error());
     }
     // Close connection

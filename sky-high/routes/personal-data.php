@@ -101,8 +101,8 @@
       </div>
       <div class="col-25">
         <select id="countryFROM" name="countryFROM" >
-          <option value="australia">AUS</option>
-          <option value="tsimari">TSI</option>
+          <option value="aws">aws</option>
+          <option value="tsi">TSI</option>
           <option value="greece">GR</option>
           <option value="menidi">MND</option>
           <option value="italy">ITALY</option>
@@ -114,8 +114,8 @@
       </div>
       <div class="col-25">
         <select id="countryTO" name="countryTO" >
-          <option value="australia">AUS</option>
-          <option value="tsimari">TSI</option>
+          <option value="aws">AWS</option>
+          <option value="tsi">TSI</option>
           <option value="greece">GR</option>
           <option value="menidi">MND</option>
           <option value="italy">ITALY</option>

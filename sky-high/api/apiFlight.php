@@ -17,7 +17,7 @@
         $flights= $_POST['countryTO'] .' ' . $_POST['countryFROM'];
 
         //Sql query
-        $sqlt = "INSERT INTO tickets(ticket_no, passenger_id, flights, amount, fare) 
+        $sqlt = "INSERT INTO tickets(ticket_no, passenger_id, flights, tickets_price, fare) 
             VALUES ('".$_POST['ticketId']."','".$_POST['idCard']."','$flights','".$_POST['myPrice']."','$fare')";
         // echo $sql;
         $result = pg_query($dbconn, $sqlt);

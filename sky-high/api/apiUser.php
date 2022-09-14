@@ -23,7 +23,7 @@
     $fare= $_POST['sheetCategory'];
     $flights= $_POST['countryTO'] .' ' . $_POST['countryFROM'];
     //Sql query
-    $sqlt = "INSERT INTO tickets(ticket_no, passenger_id, flights, amount, fare) 
+    $sqlt = "INSERT INTO tickets(ticket_no, passenger_id, flights, tickets_price, fare) 
     VALUES ('".$_POST['ticketId']."','".$_POST['idCard']."','$flights','".$_POST['myPrice']."','$fare')";
     // echo $sql; 
     //insert into tickets(ticket_no, passenger_id, flights, amount, fare)values(1234567890125,'asd','123','45','Economy');
