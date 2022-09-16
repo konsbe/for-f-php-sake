@@ -1,3 +1,9 @@
+create table userloged(id serial, username varchar);
+-- SELECT username
+-- 	FROM userloged
+-- ORDER BY id DESC
+-- LIMIT 1
+-- TRUNCATE userloged
                                         -->Create table airports
 create table airports (	
 	id serial,

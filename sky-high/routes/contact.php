@@ -11,7 +11,7 @@
 <body>
         <ul class="navbar">
             <li><a href="./dashboard.php">Dashboard</a></li>
-            <li><a href="w">Home</a></li>
+            <li><a href="../sky-high.php">Home</a></li>
             <li><a href="./destinations.php">Destinations</a></li>
             <li><a href="./information.php">CRUD Informations</a></li>
             <li><a href="./personal-data.php">Book A Flight</a></li>

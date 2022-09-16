@@ -1,3 +1,10 @@
+create table userloged(id serial, username varchar);
+-- SELECT username
+-- 	FROM userloged
+-- ORDER BY id DESC
+-- LIMIT 1
+-- TRUNCATE userloged
+
                                         -->Create table airports
 create table airports (	
 	id serial,
@@ -147,7 +154,18 @@ insert into airports (airport_code, airport_name, airport_city, airport_timezone
  values ('AWS', 'AMAZON', 'To the moon', 'UTC');
 insert into airports (airport_code, airport_name, airport_city, airport_timezone)
  values ('BOS', 'CELTICS', 'Boston', 'UTF');
-
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values ('gre', 'greece', 'Boston', 'UTF');
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values ('men', 'menidi', 'Boston', 'UTF');
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values ('ita', 'italy', 'Boston', 'UTF');
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values ('kat', 'katwPatissia', 'Boston', 'UTF');
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values ('tsi', 'tsi', 'Boston', 'UTF');
+insert into airports (airport_code, airport_name, airport_city, airport_timezone)
+ values ('aws', 'aws', 'Boston', 'UTF');
                                         -->Insert Values Into tables
 insert into aircrafts (aircraft_code, aircraft_model, capacity, range)
  values ('1A7', 'Giannis Antentokoumpo', 52, 5000000000.43);
@@ -179,6 +197,24 @@ insert into flights(
 	actual_departure_time, actual_arrival_time,
 	actual_duration, flight_status
 	) values (431267,1655799120066,1655799122366,'TSI','AWS','155',340000.89,1655799120066,1655799122366,66,1655799120266, 1655799122766, 64,'Scheduled');
+insert into flights(
+	flight_no, departure_date, 
+	arrival_date,departure_airport,
+	arrival_airport, aircraft_code,
+	distance,scheduled_departed_time,
+	scheduled_arrival_time,scheduled_duration, 
+	actual_departure_time, actual_arrival_time,
+	actual_duration, flight_status
+	) values (431269,1655799120066,1655799122366,'tsi','aws','155',340000.89,1655799120066,1655799122366,66,1655799120266, 1655799122766, 64,'Scheduled');
+insert into flights(
+	flight_no, departure_date, 
+	arrival_date,departure_airport,
+	arrival_airport, aircraft_code,
+	distance,scheduled_departed_time,
+	scheduled_arrival_time,scheduled_duration, 
+	actual_departure_time, actual_arrival_time,
+	actual_duration, flight_status
+	) values (431219,1655799120066,1655799122366,'kat','tsi','155',340000.89,1655799120066,1655799122366,66,1655799120266, 1655799122766, 64,'Scheduled');
 insert into flights(
 	flight_no, departure_date, 
 	arrival_date,departure_airport,
