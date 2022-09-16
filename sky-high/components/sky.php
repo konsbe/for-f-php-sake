@@ -15,16 +15,31 @@
 
       //Check results
       if ($result) {
-      echo "<li style='float: right; margin-left: 10px' class='loging active'>
-               <a href='./login.php'>Log out</a>
-          </li>";
+       $column = pg_fetch_row($result) ;
+        $resultArray = pg_fetch_all($result);
+        $tool = json_encode($resultArray);
+        if($column){
+
+            echo "<li style='float: right; margin-left: 10px' class='loging active'>
+            <a href='./api/apiLogoutUser.php' >Log out $column[0]</a>
+            </li>";
+        }else{
+            echo "<li style='float: right; margin-left: 10px' class='loging active'>
+          <a href='./routes/login.php'>Log in</a>
+        </li>
+      ";
+
+        }
+                    
       } else {
           echo "<li style='float: right; margin-left: 10px' class='loging active'>
         <a href='./login.php'>Log in</a>
       </li>
   ";
-          die('Query failed: ' . pg_last_error());
+        //   die('Query failed: ' . pg_last_error());
       }
       //Close connection
       pg_close($dbconn);
+
+
   ?>
