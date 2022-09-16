@@ -212,4 +212,3 @@ insert into boarding_pass(boarding_no, ticket_no, passenger_id)
 values(35, 1234567890125, 'am3715');
 
 
-

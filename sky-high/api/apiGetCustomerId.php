@@ -29,7 +29,7 @@
         }
         
       } else {
-        // die('Query failed: ' . pg_last_error());
+        die('Query failed: ' . pg_last_error());
     }
    //Close connection
     pg_close($dbconn);

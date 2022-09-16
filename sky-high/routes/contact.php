@@ -11,10 +11,15 @@
 <body>
         <ul class="navbar">
             <li><a href="./dashboard.php">Dashboard</a></li>
-            <li><a href="../sky-high.html">Home</a></li>
-            <li><a href="./destinations.html">Destinations</a></li>
+            <li><a href="w">Home</a></li>
+            <li><a href="./destinations.php">Destinations</a></li>
             <li><a href="./information.php">CRUD Informations</a></li>
             <li><a href="./personal-data.php">Book A Flight</a></li>
+              <?php
+      require_once '../env.php';
+      //Open Connection
+     include("../components/navbar.php")
+  ?>
             <li style="float:right" class="active"><a href="./contact.php">Contact</a></li>
         </ul>
 

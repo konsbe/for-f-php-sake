@@ -10,10 +10,15 @@
 <body>
         <ul class="navbar">
             <li><a href="./routes/dashboard.php">Dashboard</a></li>
-            <li class="active"><a href="./sky-high.html">Home</a></li>
-            <li ><a href="./routes/destinations.html">Destinations</a></li>
+            <li class="active"><a href="./sky-high.php">Home</a></li>
+            <li ><a href="./routes/destinations.php">Destinations</a></li>
             <li><a href="./routes/information.php">CRUD Informations</a></li>
             <li><a href="./routes/personal-data.php">Book A Flight</a></li>
+             <?php
+      require_once './env.php';
+      //Open Connection
+     include("./components/sky.php")
+  ?> 
             <li style="float:right"><a href="./routes/contact.php">Contact</a></li>
         </ul>
           <div style="white-space:nowrap;">

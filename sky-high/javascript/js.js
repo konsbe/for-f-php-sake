@@ -68,12 +68,9 @@ export const handleSubmit = async () => {
     element = document.getElementById("myForm");
     element.setAttribute("method", "POST");
     if (customerId) {
-      // alert("FUCK YOU");
-      // return "../api/apiFlight.php";
       element.setAttribute("action", "../api/apiFlight.php");
       return;
     } else {
-      // return "../api/apiUser.php";
       element.setAttribute("action", "../api/apiUser.php");
       alert(
         "Thanks! mr: " +
